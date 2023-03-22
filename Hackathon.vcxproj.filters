@@ -13,5 +13,197 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{8729b143-07b4-4025-bf60-91fba16e117c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System">
+      <UniqueIdentifier>{271a0f9e-ede9-45c0-a66c-208be9ff900f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Effect">
+      <UniqueIdentifier>{5a804fff-697c-4b54-895c-b47edee3b499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\3D">
+      <UniqueIdentifier>{4e390d08-e139-4eed-a5f8-a1a798227d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\2D">
+      <UniqueIdentifier>{dbc7ea45-26ba-4bc5-8e0a-40c5126f2d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Input">
+      <UniqueIdentifier>{b04c2479-8962-4717-928f-85088feb9ccf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="System\Mode">
+      <UniqueIdentifier>{95b1bb59-3b81-4bb7-b63a-e7bb6d3a39c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="effect.cpp">
+      <Filter>Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="application.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="directinput.cpp">
+      <Filter>System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="fade.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="game.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="input.cpp">
+      <Filter>System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="inputcontroller.cpp">
+      <Filter>System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="inputjoypad.cpp">
+      <Filter>System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="inputkeyboard.cpp">
+      <Filter>System\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="instancing.cpp">
+      <Filter>Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="mode.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="menu.cpp">
+      <Filter>Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="object.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="object2D.cpp">
+      <Filter>Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="object3D.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="sound.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="texture.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="result.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="renderer.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="title.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
+    <ClCompile Include="precompile.cpp" />
+    <ClCompile Include="camera.cpp">
+      <Filter>System</Filter>
+    </ClCompile>
+    <ClCompile Include="number.cpp">
+      <Filter>Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="number_manager.cpp">
+      <Filter>Object\2D</Filter>
+    </ClCompile>
+    <ClCompile Include="ranking_ui.cpp">
+      <Filter>Object\2D</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="precompile.h" />
+    <ClInclude Include="application.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="directinput.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="effect.h">
+      <Filter>Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="fade.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="game.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="input.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputcontroller.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputjoypad.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputkeyboard.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="inputkeydata.h">
+      <Filter>System\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="instancing.h">
+      <Filter>Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="menu.h">
+      <Filter>Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="mode.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="object.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="object2D.h">
+      <Filter>Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="object3D.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="title.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="result.h">
+      <Filter>System\Mode</Filter>
+    </ClInclude>
+    <ClInclude Include="utility.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="sound.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="texture.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="renderer.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="camera.h">
+      <Filter>System</Filter>
+    </ClInclude>
+    <ClInclude Include="number.h">
+      <Filter>Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="number_manager.h">
+      <Filter>Object\2D</Filter>
+    </ClInclude>
+    <ClInclude Include="ranking_ui.h">
+      <Filter>Object\2D</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
