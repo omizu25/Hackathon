@@ -8,7 +8,7 @@
 //==================================================
 // インクルード
 //==================================================
-#include "title.h"
+#include "tutorial.h"
 #include "input.h"
 #include "sound.h"
 #include "application.h"
@@ -28,7 +28,7 @@ namespace
 //--------------------------------------------------
 // デフォルトコンストラクタ
 //--------------------------------------------------
-CTitle::CTitle() :
+CTutorial::CTutorial() :
 	m_pMenu(nullptr)
 {
 }
@@ -36,7 +36,7 @@ CTitle::CTitle() :
 //--------------------------------------------------
 // デストラクタ
 //--------------------------------------------------
-CTitle::~CTitle()
+CTutorial::~CTutorial()
 {
 	assert(m_pMenu == nullptr);
 }
@@ -44,7 +44,7 @@ CTitle::~CTitle()
 //--------------------------------------------------
 // 初期化
 //--------------------------------------------------
-void CTitle::Init()
+void CTutorial::Init()
 {
 	{// 背景
 		CObject3D* pObj = CObject3D::Create();
@@ -62,31 +62,15 @@ void CTitle::Init()
 		pObj->SetTexture(CTexture::LABEL_TITLE_BG);
 	}
 
-	{// ロゴ
-		CObject3D* pObj = CObject3D::Create();
-
-		// 位置の設定
-		pObj->SetPos(D3DXVECTOR3(0.0f, 160.0f, 0.0f));
-
-		// サイズの設定
-		pObj->SetSize(D3DXVECTOR3(1000.0f, 300.0f, 0.0f));
-
-		// 色の設定
-		pObj->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
-		// テクスチャの設定
-		pObj->SetTexture(CTexture::LABEL_TITLE_LOGO);
-	}
-
 	{// メニュー
-		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.5f, (float)CApplication::SCREEN_HEIGHT * 0.75f, 0.0f);
-		D3DXVECTOR3 size = D3DXVECTOR3(650.0f, 100.0f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.8f, (float)CApplication::SCREEN_HEIGHT * 0.9f, 0.0f);
+		D3DXVECTOR3 size = D3DXVECTOR3(350.0f, 100.0f, 0.0f);
 
 		// 生成
 		m_pMenu = CMenu::Create(pos, size, 1, 50.0f);
 
 		// 枠の設定
-		m_pMenu->SetFrame(pos, D3DXVECTOR3((float)CApplication::SCREEN_WIDTH, 200.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
+		m_pMenu->SetFrame(pos, D3DXVECTOR3(600.f, 100.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
 
 		// テクスチャの設定
 		m_pMenu->SetTexture(0, CTexture::LABEL_TITLE_PressEnter);
@@ -99,7 +83,7 @@ void CTitle::Init()
 //--------------------------------------------------
 // 終了
 //--------------------------------------------------
-void CTitle::Uninit()
+void CTutorial::Uninit()
 {
 	//曲の停止
 	CApplication::GetInstance()->GetSound()->Stop();
@@ -116,13 +100,13 @@ void CTitle::Uninit()
 //--------------------------------------------------
 // 更新
 //--------------------------------------------------
-void CTitle::Update()
+void CTutorial::Update()
 {
 	CInput* pInput = CInput::GetKey();
 
 	if (pInput->Trigger(DIK_F1))
 	{// キーが押された
-		// モードの変更
+	 // モードの変更
 		CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_GAME);
 	}
 
@@ -133,14 +117,14 @@ void CTitle::Update()
 //--------------------------------------------------
 // 描画
 //--------------------------------------------------
-void CTitle::Draw()
+void CTutorial::Draw()
 {
 }
 
 //--------------------------------------------------
 // 入力
 //--------------------------------------------------
-void CTitle::Input()
+void CTutorial::Input()
 {
 	if (m_pMenu == nullptr)
 	{// nullチェック
@@ -155,5 +139,5 @@ void CTitle::Input()
 	}
 
 	// モードの変更
-	CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_TUTORIAL);
+	CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_GAME);
 }
