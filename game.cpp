@@ -68,7 +68,9 @@ CCircle* CGame::GetCircle()
 //--------------------------------------------------
 void CGame::Init()
 {
+	//Šeƒƒ“ƒo•Ï”‚Ì‰Šú‰»
 	m_time = 0;
+	m_bUse_SE = false;
 
 	{// ”wŒi
 		CObject3D* pObj = CObject3D::Create();
@@ -145,6 +147,7 @@ void CGame::Init()
 
 	// ‹È‚ÌÄ¶
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);
+	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 0.5f);
 }
 
 //--------------------------------------------------
@@ -169,6 +172,15 @@ void CGame::Update()
 	if (m_time % 60 == 0)
 	{
 		m_pTime->Add(-1);
+
+		if (!m_bUse_SE &&
+			m_pTime->Get() <= 10)
+		{
+			CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_SE_Waring, 2.0f);
+			CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Waring);
+			m_bUse_SE = true;
+			CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 1.2f);
+		}
 
 		if (m_pTime->Get() <= 0)
 		{
