@@ -84,9 +84,6 @@ void CRanking::Init()
 	{// ランキング
 		D3DXVECTOR3 pos = D3DXVECTOR3(510.f, 200.0f, 0.0f);
 
-		// スコアの設定
-		CRankingUI::SetScore(1);
-
 		// 生成
 		CRankingUI::Create(pos, 20.0f);
 	}

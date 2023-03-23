@@ -19,6 +19,7 @@
 #include "enemy_manager.h"
 #include "circle.h"
 #include "number_manager.h"
+#include "ranking_ui.h"
 
 //==================================================
 // 静的メンバ変数宣言
@@ -176,6 +177,9 @@ void CGame::Uninit()
 {
 	// 曲の停止
 	CApplication::GetInstance()->GetSound()->Stop();
+
+	// スコアの設定
+	CRankingUI::SetScore(m_score);
 
 	// 解放
 	Release();
