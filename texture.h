@@ -50,6 +50,9 @@ public:
 		LABEL_RESULT_SnakeAnim,		//アニメーション蛇
 		LABEL_RESULT_CaveRight,		//洞穴(右)
 		LABEL_RESULT_CaveLeft,		//洞穴(左)
+
+		/* ↓チュートリアル↓ */
+		LABEL_TUTORIAL_BG,			//チュートリアル画像
 		LABEL_MAX
 	};
 
