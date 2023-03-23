@@ -36,9 +36,16 @@ public:
 
 private:
 	//--------------------
+	// プライベート関数
+	//--------------------
+	D3DXVECTOR3 Move(int nUp, int nDown, int nLeft, int nRight);	//移動
+
+private:
+	//--------------------
 	// メンバ変数
 	//--------------------
 	D3DXVECTOR3 m_pos;	//位置
+	D3DXVECTOR3 m_move;	//移動量
 	D3DXVECTOR3 m_size;	//大きさ
 };
 

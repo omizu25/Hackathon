@@ -37,6 +37,10 @@ public:
 	void Stop(ELabel label);	// 指定した停止
 	void Stop();				// 全ての停止
 
+public:
+	void SetVolume(ELabel label, float fVolume);		// 音量の設定
+	void SetRate(ELabel label, float rate);				// ピッチ操作
+
 private:
 	HRESULT CheckChunk(HANDLE hFile, DWORD format, DWORD* pChunkSize, DWORD* pChunkDataPosition);	// チャンクのチェック
 	HRESULT LoadChunkData(HANDLE hFile, void* pBuffer, DWORD dwBuffersize, DWORD dwBufferoffset);	// チャンクデータの読み込み
@@ -48,6 +52,8 @@ private:
 	IXAudio2SourceVoice* m_pSourceVoice[LABEL_MAX];	// ソースボイス
 	BYTE* m_pDataAudio[LABEL_MAX];					// オーディオデータ
 	DWORD m_sizeAudio[LABEL_MAX];					// オーディオデータサイズ
+	float m_fVol;									// サウンドの音量を変化させる変数
+	float m_fPitch;									// サウンドの音程を変化させる変数
 };
 
 #endif // !_SOUND_H_

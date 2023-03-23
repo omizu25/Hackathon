@@ -113,9 +113,9 @@ void CObject3D::Init()
 
 	// テクスチャ座標の設定
 	pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
-	pVtx[1].tex = D3DXVECTOR2(42.0f, 0.0f);
-	pVtx[2].tex = D3DXVECTOR2(0.0f, 3.0f);
-	pVtx[3].tex = D3DXVECTOR2(42.0f, 3.0f);
+	pVtx[1].tex = D3DXVECTOR2(1.0f, 0.0f);
+	pVtx[2].tex = D3DXVECTOR2(0.0f, 1.0f);
+	pVtx[3].tex = D3DXVECTOR2(1.0f, 1.0f);
 
 	// 頂点バッファをアンロックする
 	m_pVtxBuff->Unlock();

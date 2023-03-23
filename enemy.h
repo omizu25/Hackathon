@@ -37,11 +37,13 @@ public:
 
 private:
 	void Set(const D3DXVECTOR3& pos, float rot);	// İ’è
-	void Move();	// ˆÚ“®
+	void Move();		// ˆÚ“®
+	void Collision();	// “–‚½‚è”»’è
 
 	/* ƒƒ“ƒo•Ï” */
 private:
 	D3DXVECTOR3 m_move;	// ˆÚ“®—Ê
+	int m_time;	// ŠÔ
 };
 
 #endif // !_ENEMY_H_

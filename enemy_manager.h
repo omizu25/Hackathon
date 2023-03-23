@@ -1,38 +1,33 @@
 //**************************************************
 // 
-// game.h
+// enemy_manager.h
 // Author  : katsuki mizuki
 // 
 //**************************************************
-#ifndef _GAME_H_	//このマクロ定義がされてなかったら
-#define _GAME_H_	//２重インクルード防止のマクロ定義
+#ifndef _ENEMY_MANAGER_H_	// このマクロ定義がされてなかったら
+#define _ENEMY_MANAGER_H_	// 二重インクルード防止のマクロ定義
 
 //==================================================
 // インクルード
 //==================================================
-#include "mode.h"
-
-//==================================================
-// 前方宣言
-//==================================================
-class CPlayer;	//プレイヤー
+#include "object.h"
 
 //==================================================
 // クラス
 //==================================================
-class CGame : public CMode
+class CEnemyManager : public CObject
 {
-	/* 定義 */
-public:
-
+	/* ↓定義↓ */
+private:
+	
 	/* ↓静的メンバ関数↓ */
 public:
-	CPlayer* GetPlayer();	// プレイヤーの取得
+	static CEnemyManager* Create();	// 生成
 
 	/* ↓メンバ関数↓ */
 public:
-	CGame();			// デフォルトコンストラクタ
-	~CGame() override;	// デストラクタ
+	CEnemyManager();			// デフォルトコンストラクタ
+	~CEnemyManager() override;	// デストラクタ
 
 public:
 	void Init() override;	// 初期化
@@ -40,9 +35,14 @@ public:
 	void Update() override;	// 更新
 	void Draw() override;	// 描画
 
+private:
+	void Game();	// ゲーム
+
 	/* ↓メンバ変数↓ */
 private:
-	static CPlayer* m_pPlayer;	//プレイヤー
+	int m_time;		// 時間
+	int m_pop;		// 出現数
+	int m_interval;	// 間隔
 };
 
-#endif // !_GAME_H_
+#endif // !_ENEMY_MANAGER_H_
