@@ -112,7 +112,7 @@ void CGame::Init()
 		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.27f, size.y * 0.65f, 0.0f);
 
 		// 生成
-		m_pTime = CNumberManager::Create(pos, size, 30);
+		m_pTime = CNumberManager::Create(pos, size, 60);
 
 		//スコア用UIの生成
 		CObject2D* pScore = CObject2D::Create();
