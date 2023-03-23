@@ -47,6 +47,7 @@ public:
 private:
 	int m_time;
 	D3DXVECTOR2 u;
+	bool m_effect;
 };
 
 #endif // !_RETURN_H_

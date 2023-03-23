@@ -180,58 +180,37 @@ void CEffect::Player(const D3DXVECTOR3& pos)
 //--------------------------------------------------
 void CEffect::Enemy(const D3DXVECTOR3& pos)
 {
-	float red = FloatRandom(1.0f, 0.0f);
-	float green = FloatRandom(1.0f, 0.0f);
-	float blue = FloatRandom(1.0f, 0.0f);
-
 	D3DXCOLOR col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	col.r = FloatRandom(1.0f, 0.0f);
+	col.g = FloatRandom(1.0f, 0.0f);
+	col.b = FloatRandom(1.0f, 0.0f);
+
 	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	D3DXVECTOR3 randomPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	D3DXCOLOR randomCol = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
 	float rot = 0.0f;
 	float random = 0.0f;
 
-	for (int i = 0; i < MAX_EXPLOSION; i++)
+	for (int i = 0; i < 1000; i++)
 	{
-		rot = (D3DX_PI * 2.0f) / MAX_EXPLOSION * i;
+		rot = (D3DX_PI * 2.0f) / 1000 * i;
 
 		// Šp“x‚Ì³‹K‰»
 		NormalizeAngle(&rot);
 
-		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(75.0f, 50.0f);
+		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(100.0f, -50.0f);
 
-		random = FloatRandom(10.0f, 10.0f * 0.5f);
-
-		move.x = sinf(rot) * random;
-		move.y = cosf(rot) * random;
-
-		col.r = red + FloatRandom(0.25f, -0.25f);
-		col.g = green + FloatRandom(0.25f, -0.25f);
-		col.b = blue + FloatRandom(0.25f, -0.25f);
-
-		// ¶¬
-		CEffect::Create(pos + randomPos, move, col);
-	}
-
-	for (int i = 0; i < (MAX_EXPLOSION / 2); i++)
-	{
-		rot = (D3DX_PI * 2.0f) / (MAX_EXPLOSION / 2) * i;
-
-		// Šp“x‚Ì³‹K‰»
-		NormalizeAngle(&rot);
-
-		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(75.0f, 50.0f);
-
-		random = FloatRandom(10.0f, 10.0f * 0.1f);
+		random = FloatRandom(45.0f, 45.0f * 0.1f);
 
 		move.x = sinf(rot) * random;
 		move.y = cosf(rot) * random;
 
-		col.r = red + FloatRandom(0.25f, -0.25f);
-		col.g = green + FloatRandom(0.25f, -0.25f);
-		col.b = blue + FloatRandom(0.25f, -0.25f);
+		randomCol.r = col.r + FloatRandom(0.25f, -0.25f);
+		randomCol.g = col.g + FloatRandom(0.25f, -0.25f);
+		randomCol.b = col.b + FloatRandom(0.25f, -0.25f);
 
 		// ¶¬
-		CEffect::Create(pos + randomPos, move, col);
+		CEffect::Create(pos + randomPos, move, randomCol);
 	}
 }
 

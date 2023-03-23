@@ -16,6 +16,7 @@
 #include "mode.h"
 #include "game.h"
 #include "ranking_ui.h"
+#include "effect.h"
 
 //==================================================
 // 定義
@@ -112,6 +113,7 @@ void CReturn::Init()
 {
 	m_time = 0;
 	u = D3DXVECTOR2(0.0f, 0.5f);
+	m_effect = false;
 
 	// 初期化
 	CObject3D::Init();
@@ -164,6 +166,17 @@ void CReturn::Update()
 
 	// 位置の設定
 	CObject3D::SetPos(pos);
+
+	if (!m_effect)
+	{
+		if (pos.x >= (float)CApplication::SCREEN_WIDTH * 0.25f)
+		{
+			CEffect::Enemy(pos);
+			CEffect::Bom(pos);
+			m_effect = true;
+		}
+	}
+		
 
 	if (pos.x >= (float)CApplication::SCREEN_WIDTH)
 	{// 範囲外に出た

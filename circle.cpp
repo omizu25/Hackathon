@@ -88,7 +88,7 @@ void CCircle::Init()
 	CObject3D::SetCol(D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_circle);
+	CObject3D::SetTexture(CTexture::LABEL_Enemy_ver3_outside);
 }
 
 //--------------------------------------------------
@@ -122,7 +122,7 @@ void CCircle::Update()
 	if (!m_nowAppear)
 	{
 		// 色の設定
-		SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+		SetCol(D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f));
 
 		if (m_appear)
 		{
@@ -223,7 +223,7 @@ void CCircle::Appear()
 		SetSize(size);
 	}
 
-	D3DXCOLOR col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	D3DXCOLOR col = D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f);
 
 	col.a = 1.0f - (CosCurve(m_time, 0.1f) * 0.7f);
 
