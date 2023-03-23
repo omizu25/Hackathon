@@ -110,7 +110,7 @@ void CRanking::Init()
 
 	// ‹È‚ÌÄ¶
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Ranking);
-	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Ranking,0.5f);
+	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Ranking,0.4f);
 }
 
 //--------------------------------------------------
