@@ -24,6 +24,9 @@ public:
 	static int GetNumAll();			// 総数の取得
 	static CEffect** GetEffect();	// エフェクトの情報の取得
 	static void Explosion(const D3DXVECTOR3& pos);	// 爆発
+	static void Player(const D3DXVECTOR3& pos);	// 爆発
+	static void Bom(const D3DXVECTOR3& pos);	// 爆発
+	static void Enemy(const D3DXVECTOR3& pos);	// 爆発
 
 	/* ↓静的メンバ変数↓ */
 private:

@@ -16,6 +16,7 @@
 #include "player.h"
 #include "circle.h"
 #include "enemy_manager.h"
+#include "effect.h"
 
 //==================================================
 // ’è‹`
@@ -318,6 +319,7 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 
 		m_pObj->SetPos(pos);
 		m_pObj->SetSize(D3DXVECTOR3(OBJ_SIZE, OBJ_SIZE, 0.0f));
+		m_pObj->SetCol(D3DXCOLOR(0.0f, 1.0f, 0.0f, 0.25f));
 		m_pObj->SetTexture(CTexture::LABEL_Enemy_ver3_outside);
 	}
 }
@@ -478,5 +480,7 @@ void CSnakeHead::CircleCollision()
 		m_pObj->SetRelease();
 
 		pGame->AddScore(1);
+
+		CEffect::Explosion(GetPos());
 	}
 }
