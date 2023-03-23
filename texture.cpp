@@ -18,20 +18,22 @@ namespace
 {
 const string FILE_PATH[] =
 {// テクスチャのパス
-	"data/TEXTURE/effect.png",			// エフェクト
-	"data/TEXTURE/Cursor.png",			// カーソル
-	"data/TEXTURE/Number.png",			// 数字
-	"data/TEXTURE/Enemy.png",			// 敵
-	"data/TEXTURE/Enemy_ver2.png",		// 敵ver.2
-	"data/TEXTURE/Player.png",			// プレイヤー
-	"data/TEXTURE/UI_Snake.png",		// 蛇の数(UI)
-	"data/TEXTURE/Shape_Circle.png",	// 図形(円)
-	"data/TEXTURE/Shape_Square.png",	// 図形(四角)
-	"data/TEXTURE/Shape_Triangle.png",	// 図形(三角)
-	"data/TEXTURE/Time.png",			// タイム
-	"data/TEXTURE/Life.png",			// ライフ
-	"data/TEXTURE/Frame_Space.png",		// 宇宙フレーム
-	"data/TEXTURE/circle.png",			// サークル
+	"data/TEXTURE/effect.png",				// エフェクト
+	"data/TEXTURE/Cursor.png",				// カーソル
+	"data/TEXTURE/Number.png",				// 数字
+	"data/TEXTURE/Enemy.png",				// 敵
+	"data/TEXTURE/Enemy_ver2.png",			// 敵ver.2
+	"data/TEXTURE/Enemy_ver3_inside.png",	// 敵ver.3_内側
+	"data/TEXTURE/Enemy_ver3_outside.png",	// 敵ver.3_外側
+	"data/TEXTURE/Player.png",				// プレイヤー
+	"data/TEXTURE/UI_Snake.png",			// 蛇の数(UI)
+	"data/TEXTURE/Shape_Circle.png",		// 図形(円)
+	"data/TEXTURE/Shape_Square.png",		// 図形(四角)
+	"data/TEXTURE/Shape_Triangle.png",		// 図形(三角)
+	"data/TEXTURE/Time.png",				// タイム
+	"data/TEXTURE/Life.png",				// ライフ
+	"data/TEXTURE/Frame_Space.png",			// 宇宙フレーム
+	"data/TEXTURE/circle.png",				// サークル
 
 	/* ↓タイトル↓ */
 	"data/TEXTURE/Title/BG.png",			// 背景

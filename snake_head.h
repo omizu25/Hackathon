@@ -16,6 +16,7 @@
 // 前方宣言
 //==================================================
 class CSnakeBody;
+class CObject3D;
 
 //==================================================
 // 定義
@@ -57,6 +58,7 @@ private:
 	D3DXVECTOR3 m_target;	// ターゲット
 	D3DXVECTOR3 m_posOld;	// 前回の位置
 	CSnakeBody** m_pBody;	// 体の情報
+	CObject3D* m_pObj;
 	bool m_chase;
 };
 

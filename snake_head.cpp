@@ -24,7 +24,8 @@ namespace
 const int MAX_BODY = 25;			// 体の最大数
 const int IDX_PARENT = 0;			// 親の番号
 const int STD_TIME = 90;			// 発生時間
-const float STD_SIZE = 90.0f;		// サイズの標準値
+const float STD_SIZE = 30.0f;		// サイズの標準値
+const float OBJ_SIZE = 300.0f;		// サイズの標準値
 const float STD_MOVE = 2.0f;		// 移動量の標準値
 const float AMPLITUDE_WIDTH = 3.0f;	// 振幅の幅
 const float AMPLITUDE_SPEED = 2.0f;	// 振幅の速度
@@ -76,6 +77,7 @@ CSnakeHead::CSnakeHead() :
 	m_target(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_posOld(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_pBody(nullptr),
+	m_pObj(nullptr),
 	m_chase(false)
 {
 }
@@ -277,10 +279,18 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_Enemy);
+	CObject3D::SetTexture(CTexture::LABEL_Enemy_ver2);
 
 	// 移動量の設定
 	SetMove();
+
+	{// 円
+		m_pObj = CObject3D::Create();
+
+		m_pObj->SetPos(pos);
+		CObject3D::SetSize(D3DXVECTOR3(OBJ_SIZE, OBJ_SIZE, 0.0f));
+		m_pObj->SetTexture(CTexture::LABEL_Enemy);
+	}
 }
 
 //--------------------------------------------------
@@ -345,14 +355,18 @@ void CSnakeHead::Target()
 	}
 
 	D3DXVECTOR3 pos = CObject3D::GetPos();
-	float size = STD_SIZE * 1.5f;
+	float size = OBJ_SIZE * 0.5f;
 	D3DXVECTOR3 targetPos = pPlayer->GetPos();
 	float targetSize = pPlayer->GetSize().x * 0.5f;
+
+	D3DXCOLOR col = GetCol();
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// 当たり判定
 		m_target = targetPos;
 		m_chase = true;
+
+		col = D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f);
 	}
 	else if (CollisionCircle(pos, size, m_target, targetSize))
 	{
@@ -363,6 +377,8 @@ void CSnakeHead::Target()
 		m_target.y = FloatRandom(height, -height);
 
 		m_chase = false;
+
+		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
 	}
 	else
 	{
@@ -376,7 +392,11 @@ void CSnakeHead::Target()
 		}
 
 		m_chase = false;
+
+		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
 	}
+
+	SetCol(col);
 }
 
 //--------------------------------------------------
@@ -393,7 +413,7 @@ void CSnakeHead::PlayerCollision()
 	}
 
 	D3DXVECTOR3 pos = CObject3D::GetPos();
-	float size = STD_SIZE * 0.3f;
+	float size = STD_SIZE * 0.5f;
 	D3DXVECTOR3 targetPos = pPlayer->GetPos();
 	float targetSize = pPlayer->GetSize().x * 0.5f;
 
