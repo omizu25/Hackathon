@@ -29,6 +29,7 @@ public:
 		LABEL_SE_Danger,		// ŠëŒ¯M†
 		LABEL_SE_Explosion,		// ”š”­
 		LABEL_SE_Deth,			// €–S
+		LABEL_SE_DethEnemy,			// €–S
 		LABEL_MAX,
 	};
 

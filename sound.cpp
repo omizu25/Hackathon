@@ -35,6 +35,7 @@ const SParam PARAM[] =
 	{ "data/SE/life_danger.wav", -1 },			// –½ŠëŒ¯
 	{ "data/SE/Explosion.wav", 0 },				// –½ŠëŒ¯
 	{ "data/SE/Dis.wav", 0 },					// –½ŠëŒ¯
+	{ "data/SE/HItEnemy.wav", 0 },					// –½ŠëŒ¯
 };
 }
 
