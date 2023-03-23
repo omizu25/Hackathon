@@ -34,6 +34,7 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Life.png",				// ライフ
 	"data/TEXTURE/Frame_Space.png",			// 宇宙フレーム
 	"data/TEXTURE/circle.png",				// サークル
+	"data/TEXTURE/Number_Rank.png",			// 位
 
 	/* ↓タイトル↓ */
 	"data/TEXTURE/Title/BG.png",			// 背景
