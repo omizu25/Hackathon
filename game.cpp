@@ -148,6 +148,7 @@ void CGame::Init()
 	// ‹È‚ÌÄ¶
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);
 	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 0.5f);
+	CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 1.0f);
 }
 
 //--------------------------------------------------
