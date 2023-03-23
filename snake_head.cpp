@@ -139,6 +139,17 @@ void CSnakeHead::Update()
 
 	m_time++;
 
+	if (m_time == STD_TIME)
+	{
+		// F‚Ìæ“¾
+		D3DXCOLOR col = CObject3D::GetCol();
+
+		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
+
+		// F‚Ìİ’è
+		CObject3D::SetCol(col);
+	}
+
 	if (m_time <= STD_TIME)
 	{// ¶¬ŠÔ’†
 
