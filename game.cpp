@@ -90,7 +90,7 @@ void CGame::Init()
 
 	{// スコア
 		D3DXVECTOR3 size = D3DXVECTOR3(50.0f, 100.0f, 0.0f);
-		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH - 30.0f, size.y * 0.65f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.27f, size.y * 0.65f, 0.0f);
 
 		// 生成
 		m_pTime = CNumberManager::Create(pos, size, 30);
@@ -113,7 +113,7 @@ void CGame::Init()
 
 	{// タイム
 		D3DXVECTOR3 size = D3DXVECTOR3(50.0f, 100.0f, 0.0f);
-		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.27f, size.y * 0.65f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH - 30.0f, size.y * 0.65f, 0.0f);
 
 		// 生成
 		m_pScore = CNumberManager::Create(pos, size, 0);
