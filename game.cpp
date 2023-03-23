@@ -112,7 +112,7 @@ void CGame::Init()
 		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.27f, size.y * 0.65f, 0.0f);
 
 		// 生成
-		m_pTime = CNumberManager::Create(pos, size, 30);
+		m_pTime = CNumberManager::Create(pos, size, 60);
 
 		//スコア用UIの生成
 		CObject2D* pScore = CObject2D::Create();
@@ -237,36 +237,6 @@ void CGame::Update()
 	m_pScore->Set(m_score);
 
 	DeathPlayer();
-
-#ifdef _DEBUG
-	CInput* pInput = CInput::GetKey();
-
-	if (pInput->Trigger(DIK_F1))
-	{// キーが押された
-		// モードの変更
-		CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_RESULT);
-	}
-	else if (pInput->Trigger(DIK_F2))
-	{// キーが押された
-		CEffect::Explosion(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-	}
-	else if (pInput->Trigger(DIK_F3))
-	{// キーが押された
-		CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 1.2f);
-	}
-	else if (pInput->Trigger(DIK_F4))
-	{// キーが押された
-		CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 0.8f);
-	}
-	else if (pInput->Trigger(DIK_F5))
-	{// キーが押された
-		CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 1.5f);
-	}
-	else if (pInput->Trigger(DIK_F6))
-	{// キーが押された
-		CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 0.5f);
-	}
-#endif // _DEBUG
 }
 
 //--------------------------------------------------
