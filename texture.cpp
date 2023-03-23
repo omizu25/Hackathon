@@ -48,6 +48,8 @@ const string FILE_PATH[] =
 
 	/* ↓リザルト↓ */
 	"data/TEXTURE/Result/Snake_Anim.png",	//アニメーション蛇
+	"data/TEXTURE/Result/Cave_Right",		//洞穴(右)
+	"data/TEXTURE/Result/Cave_Left",		//洞穴(左)
 };
 }
 
