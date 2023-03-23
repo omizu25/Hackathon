@@ -82,10 +82,10 @@ void CGame::Init()
 		pObj->SetSize(D3DXVECTOR3((float)CApplication::SCREEN_WIDTH, (float)CApplication::SCREEN_HEIGHT, 0.0f));
 
 		// 色の設定
-		pObj->SetCol(D3DXCOLOR(0.25f, 0.25f, 0.25f, 1.0f));
+		pObj->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 		// テクスチャの設定
-		pObj->SetTexture(CTexture::LABEL_NONE);
+		pObj->SetTexture(CTexture::LABEL_Frame_Space);
 	}
 
 	{// スコア
