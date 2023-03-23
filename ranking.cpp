@@ -82,7 +82,7 @@ void CRanking::Init()
 	}
 
 	{// ランキング
-		D3DXVECTOR3 pos = D3DXVECTOR3(520.f, 200.0f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3(510.f, 200.0f, 0.0f);
 
 		// スコアの設定
 		CRankingUI::SetScore(1);
@@ -93,16 +93,16 @@ void CRanking::Init()
 
 	{// メニュー
 		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.75f, (float)CApplication::SCREEN_HEIGHT * 0.5f, 0.0f);
-		D3DXVECTOR3 size = D3DXVECTOR3(500.0f, 400.0f, 0.0f);
+		D3DXVECTOR3 size = D3DXVECTOR3(450.0f, 600.0f, 0.0f);
 
 		// 生成
-		m_pMenu = CMenu::Create(pos, size, 2, 0.0f);
+		m_pMenu = CMenu::Create(pos, size, 2, -400.0f);
 
 		// 枠の設定
-		m_pMenu->SetFrame(pos, D3DXVECTOR3(500.f, 600.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
+		m_pMenu->SetFrame(pos, D3DXVECTOR3(570.0f, 720.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
 
 		// カーソルの設定
-		m_pMenu->SetCursor(D3DXVECTOR3(50.0f, 50.0f, 0.0f), 20.0f);
+		m_pMenu->SetCursor(D3DXVECTOR3(50.0f, 50.0f, 0.0f), 0.0f);
 
 		// テクスチャの設定
 		m_pMenu->SetTexture(0, CTexture::LABEL_RANKING_RETURN_LOGO);
