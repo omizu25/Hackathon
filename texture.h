@@ -20,6 +20,7 @@ public:
 		LABEL_Effect = 0,	// エフェクト
 		LABEL_Cursor,		// カーソル
 		LABEL_Number,		// 数字
+		LABEL_Player,		// プレイヤー
 		LABEL_MAX
 	};
 
