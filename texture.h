@@ -21,6 +21,7 @@ public:
 		LABEL_Cursor,		// カーソル
 		LABEL_Number,		// 数字
 		LABEL_Enemy,		// 敵
+		LABEL_Player,		// プレイヤー
 		LABEL_MAX
 	};
 
