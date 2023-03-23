@@ -87,6 +87,7 @@ void CGame::Uninit()
 //--------------------------------------------------
 void CGame::Update()
 {
+#ifdef _DEBUG
 	CInput* pInput = CInput::GetKey();
 
 	if (pInput->Trigger(DIK_F1))
@@ -98,6 +99,23 @@ void CGame::Update()
 	{// キーが押された
 		CEffect::Explosion(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 	}
+	else if (pInput->Trigger(DIK_F3))
+	{// キーが押された
+		CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 1.2f);
+	}
+	else if (pInput->Trigger(DIK_F4))
+	{// キーが押された
+		CApplication::GetInstance()->GetSound()->SetRate(CSound::LABEL_BGM_Game, 0.8f);
+	}
+	else if (pInput->Trigger(DIK_F5))
+	{// キーが押された
+		CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 1.5f);
+	}
+	else if (pInput->Trigger(DIK_F6))
+	{// キーが押された
+		CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 0.5f);
+	}
+#endif // _DEBUG
 }
 
 //--------------------------------------------------
