@@ -15,6 +15,12 @@
 #include "fade.h"
 #include "object3D.h"
 #include "effect.h"
+#include "player.h"
+
+//==================================================
+// 静的メンバ変数宣言
+//==================================================
+CPlayer* CGame::m_pPlayer = nullptr;	//プレイヤー
 
 //==================================================
 // 定義
@@ -56,6 +62,9 @@ void CGame::Init()
 
 		// テクスチャの設定
 		pObj->SetTexture(CTexture::LABEL_NONE);
+
+		//プレイヤーの生成
+		m_pPlayer = CPlayer::Create();
 	}
 
 	// 曲の再生
