@@ -22,8 +22,8 @@
 //==================================================
 namespace
 {
-const int STD_TIME = 30;
-const float STD_SIZE = 300.0f;
+const int STD_TIME = 20;
+const float STD_SIZE = 270.0f;
 }
 
 //==================================================
@@ -54,7 +54,7 @@ float CReturn::GetMove()
 void CReturn::CreateAll()
 {
 	m_move = 0.0f;
-	D3DXVECTOR3 pos = D3DXVECTOR3(-STD_SIZE, 0.0f, 0.0f);
+	D3DXVECTOR3 pos = D3DXVECTOR3(-STD_SIZE, -120.0f, 0.0f);
 
 //	m_count = CRankingUI::Get(-1);
 	m_count = 7;

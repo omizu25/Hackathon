@@ -43,7 +43,9 @@ private:
 	/* ↓メンバ変数↓ */
 private:
 	int m_time;			// 時間
+	int m_nGameTime;	// ゲーム時間
 	int m_interval;		// 間隔
+	int m_nMaxPop;		// 出現数の動的な最大値
 	static int m_pop;	// 出現数
 };
 
