@@ -124,6 +124,9 @@
     <ClCompile Include="enemy.cpp">
       <Filter>Object\3D</Filter>
     </ClCompile>
+    <ClCompile Include="enemy_manager.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
@@ -215,6 +218,9 @@
       <Filter>Object\3D</Filter>
     </ClInclude>
     <ClInclude Include="enemy.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy_manager.h">
       <Filter>Object\3D</Filter>
     </ClInclude>
   </ItemGroup>

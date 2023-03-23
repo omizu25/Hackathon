@@ -150,7 +150,7 @@ void CEnemy::Set(const D3DXVECTOR3& pos, float rot)
 	CObject3D::SetCol(D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_NONE);
+	CObject3D::SetTexture(CTexture::LABEL_Enemy);
 }
 
 //--------------------------------------------------
