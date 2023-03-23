@@ -18,6 +18,7 @@
 class CPlayer;	//プレイヤー
 class CCircle;
 class CNumberManager;
+class CObject2D;
 
 //==================================================
 // クラス
@@ -51,12 +52,16 @@ public:
 	void Update() override;	// 更新
 	void Draw() override;	// 描画
 
+	void DeathPlayer();
+
 	/* ↓メンバ変数↓ */
 private:
 	int m_time;
 	bool m_bUse_SE;				//SEを再生するかどうか変化させる変数
 	CNumberManager* m_pTime;	// タイムの情報
 	CNumberManager* m_pScore;	// スコアの情報
+
+	CObject2D* pObjPlayer[3];	
 };
 
 #endif // !_GAME_H_

@@ -153,34 +153,33 @@ void CGame::Init()
 		pTime->SetTexture(CTexture::LABEL_Time);
 	}
 
-	{// 残機
-		int nLife = CPlayer::GetLife();
-		CObject2D* pObj[3];
-
-		for (int i = 0; i < nLife; i++)
-		{
-			pObj[i] = CObject2D::Create();
-
-			// 位置の設定
-			float fPosX = CApplication::SCREEN_WIDTH / 2 - 70.0f;
-			pObj[i]->SetPos(D3DXVECTOR3(fPosX + (70.0f * i), 70.0f, 0.0f));
-
-			// サイズの設定
-			pObj[i]->SetSize(D3DXVECTOR3(70.0f, 70.0f, 0.0f));
-
-			// 色の設定
-			pObj[i]->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
-			// テクスチャの設定
-			pObj[i]->SetTexture(CTexture::LABEL_Player);
-		}
-	}
-
 	// サークル
 	m_pCircle = CCircle::Create();
 
 	//プレイヤーの生成
 	m_pPlayer = CPlayer::Create();
+
+	{// 残機
+		int nLife = CPlayer::GetLife();
+
+		for (int i = 0; i < nLife; i++)
+		{
+			pObjPlayer[i] = CObject2D::Create();
+
+			// 位置の設定
+			float fPosX = CApplication::SCREEN_WIDTH / 2 - 70.0f;
+			pObjPlayer[i]->SetPos(D3DXVECTOR3(fPosX + (70.0f * i), 70.0f, 0.0f));
+
+			// サイズの設定
+			pObjPlayer[i]->SetSize(D3DXVECTOR3(70.0f, 70.0f, 0.0f));
+
+			// 色の設定
+			pObjPlayer[i]->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+
+			// テクスチャの設定
+			pObjPlayer[i]->SetTexture(CTexture::LABEL_Player);
+		}
+	}
 
 	// 生成
 	CEnemyManager::Create();
@@ -237,6 +236,8 @@ void CGame::Update()
 
 	m_pScore->Set(m_score);
 
+	DeathPlayer();
+
 #ifdef _DEBUG
 	CInput* pInput = CInput::GetKey();
 
@@ -273,4 +274,17 @@ void CGame::Update()
 //--------------------------------------------------
 void CGame::Draw()
 {
+}
+
+//--------------------------------------------------
+// 残機を減らす処理
+//--------------------------------------------------
+void CGame::DeathPlayer()
+{
+	int nLife = CPlayer::GetLife();
+
+	for (int i = 2; i > nLife - 1; i--)
+	{
+		pObjPlayer[i]->SetRelease();
+	}
 }
