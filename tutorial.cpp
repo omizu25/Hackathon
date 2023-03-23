@@ -56,21 +56,21 @@ void CTutorial::Init()
 		pObj->SetSize(D3DXVECTOR3((float)CApplication::SCREEN_WIDTH, (float)CApplication::SCREEN_HEIGHT, 0.0f));
 
 		// 色の設定
-		pObj->SetCol(D3DXCOLOR(0.75f, 0.75f, 0.75f, 1.0f));
+		pObj->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 		// テクスチャの設定
-		pObj->SetTexture(CTexture::LABEL_TITLE_BG);
+		pObj->SetTexture(CTexture::LABEL_TUTORIAL_BG);
 	}
 
 	{// メニュー
-		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.8f, (float)CApplication::SCREEN_HEIGHT * 0.9f, 0.0f);
-		D3DXVECTOR3 size = D3DXVECTOR3(350.0f, 100.0f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.313f, (float)CApplication::SCREEN_HEIGHT * 0.92f, 0.0f);
+		D3DXVECTOR3 size = D3DXVECTOR3(350.0f, 50.0f, 0.0f);
 
 		// 生成
 		m_pMenu = CMenu::Create(pos, size, 1, 50.0f);
 
 		// 枠の設定
-		m_pMenu->SetFrame(pos, D3DXVECTOR3(600.f, 100.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
+		m_pMenu->SetFrame(pos, size + D3DXVECTOR3(300.0f, 10.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
 
 		// テクスチャの設定
 		m_pMenu->SetTexture(0, CTexture::LABEL_TITLE_PressEnter);
