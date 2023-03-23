@@ -51,6 +51,7 @@ public:
 	/* ↓メンバ変数↓ */
 private:
 	int m_time;
+	bool m_bUse_SE;				//SEを再生するかどうか変化させる変数
 	CNumberManager* m_pTime;	// タイムの情報
 	CNumberManager* m_pScore;	// スコアの情報
 };
