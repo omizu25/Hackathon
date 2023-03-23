@@ -33,6 +33,11 @@ const SParam PARAM[] =
 
 static_assert(sizeof(PARAM) / sizeof(PARAM[0]) == CSound::LABEL_MAX, "aho");
 
+//==================================================
+// 定数定義
+//==================================================
+const float DEFAULT_PARAM = 1.0f;
+
 //--------------------------------------------------
 // デフォルトコンストラクタ
 //--------------------------------------------------
@@ -65,6 +70,10 @@ CSound::~CSound()
 //--------------------------------------------------
 HRESULT CSound::Init(HWND hWnd)
 {
+	//各変数の初期化
+	m_fVol = DEFAULT_PARAM;
+	m_fPitch = DEFAULT_PARAM;
+
 	// COMライブラリの初期化
 	CoInitializeEx(NULL, COINIT_MULTITHREADED);
 
@@ -310,6 +319,22 @@ void CSound::Stop()
 		// 一時停止
 		m_pSourceVoice[i]->Stop(0);
 	}
+}
+
+//--------------------------------------
+//音量設定
+//--------------------------------------
+void CSound::SetVolume(ELabel lavel, float fVolume)
+{//1.使用するサウンドタイプを指定 2.設定したい値を代入
+	m_pSourceVoice[lavel]->SetVolume(fVolume);
+}
+
+//--------------------------------------
+//ピッチ操作
+//--------------------------------------
+void CSound::SetRate(ELabel lavel, float rate)
+{//1.使用するサウンドタイプを指定 2.設定したい値を代入
+	m_pSourceVoice[lavel]->SetFrequencyRatio(rate);
 }
 
 //--------------------------------------------------

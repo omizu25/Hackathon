@@ -9,6 +9,15 @@
 // インクルード
 //-----------------------------
 #include "player.h"
+#include "input.h"
+
+//-----------------------------
+// 定義
+//-----------------------------
+namespace
+{
+	float fSpeed = 3.0f;	//速度
+}
 
 //===============================
 // コンストラクタ
@@ -16,6 +25,7 @@
 CPlayer::CPlayer()
 {
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//位置
+	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//移動量
 	m_size = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//大きさ
 }
 
@@ -57,6 +67,21 @@ void CPlayer::Update()
 {
 	//オブジェクトの更新
 	CObject3D::Update();
+
+	//移動
+	D3DXVECTOR3 move = Move(DIK_W, DIK_S, DIK_A, DIK_D);
+
+	//----------------------
+	// 移動量を更新(減衰)
+	//----------------------
+	m_move.x += (0.0f - move.x) * 0.4f;
+	m_move.y += (0.0f - move.y) * 0.4f;
+
+	//位置に移動量を加算
+	m_pos += m_move;
+
+	//位置を設定
+	CObject3D::SetPos(m_pos);
 }
 
 //===============================
@@ -87,4 +112,82 @@ CPlayer* CPlayer::Create()
 	}
 
 	return pPlayer;
+}
+
+//===============================
+// 移動
+// 引数：上下左右キー
+//===============================
+D3DXVECTOR3 CPlayer::Move(int nUp, int nDown, int nLeft, int nRight)
+{
+	CInput* pInput = CInput::GetKey();
+
+	if (pInput->Press(nLeft))
+	{//左キーが押された
+		//-------------------------
+		// 左上移動
+		//-------------------------
+		if (pInput->Press(nUp))
+		{//上キーが押された
+			m_move.x += sinf(-D3DX_PI * 0.75f) * fSpeed;
+			m_move.y += cosf(-D3DX_PI * 0.25f) * fSpeed;
+		}
+		//-------------------------
+		// 左下移動
+		//-------------------------
+		else if (pInput->Press(nDown))
+		{//下キーが押された
+			m_move.x += sinf(-D3DX_PI * 0.25f) * fSpeed;
+			m_move.y += cosf(D3DX_PI * 0.75f) * fSpeed;
+		}
+		//-------------------------
+		// 左移動
+		//-------------------------
+		else
+		{
+			m_move.x += sinf(-D3DX_PI * 0.5f) * fSpeed;
+		}
+	}
+	else if (pInput->Press(nRight))
+	{//右キーが押された
+		//-------------------------
+		// 右上移動
+		//-------------------------
+		if (pInput->Press(nUp))
+		{//上キーが押された
+			m_move.x += sinf(D3DX_PI * 0.25f) * fSpeed;
+			m_move.y += cosf(D3DX_PI * 0.25f) * fSpeed;
+		}
+		//-------------------------
+		// 右下移動
+		//-------------------------
+		else if (pInput->Press(nDown))
+		{//下キーが押された
+			m_move.x += sinf(D3DX_PI * 0.75f) * fSpeed;
+			m_move.y += cosf(-D3DX_PI * 0.75f) * fSpeed;
+		}
+		//-------------------------
+		// 右移動
+		//-------------------------
+		else
+		{
+			m_move.x += sinf(D3DX_PI * 0.5f) * fSpeed;
+		}
+	}
+	//-------------------------
+	// 上移動
+	//-------------------------
+	else if (pInput->Press(nUp))
+	{//上キーが押された
+		m_move.y += cosf(D3DX_PI * 0.0f) * fSpeed;
+	}
+	//-------------------------
+	// 下移動
+	//-------------------------
+	else if (pInput->Press(nDown))
+	{//下キーが押された
+		m_move.y += cosf(-D3DX_PI * 1.0f) * fSpeed;
+	}
+
+	return m_move;
 }
