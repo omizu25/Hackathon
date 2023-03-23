@@ -30,6 +30,8 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Shape_Triangle.png",	// 図形(三角)
 	"data/TEXTURE/Time.png",			// タイム
 	"data/TEXTURE/Life.png",			// ライフ
+	"data/TEXTURE/Frame_Space.png",		// 宇宙フレーム
+	"data/TEXTURE/circle.png",			// サークル
 
 	/* ↓タイトル↓ */
 	"data/TEXTURE/Title/BG.png",			// 背景

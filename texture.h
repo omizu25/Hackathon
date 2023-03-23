@@ -29,6 +29,8 @@ public:
 		LABEL_Shape_Triangle,	// 図形(三角)
 		LABEL_Time,				// タイム
 		LABEL_Life,				// ライフ
+		LABEL_Frame_Space,		// 宇宙フレーム
+		LABEL_circle,			// サークル
 
 		/* ↓タイトル↓ */
 		LABEL_TITLE_BG,			// 背景
