@@ -27,6 +27,10 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Shape_Circle.png",	// }Œ`(‰~)
 	"data/TEXTURE/Shape_Square.png",	// }Œ`(lŠp)
 	"data/TEXTURE/Shape_Triangle.png",	// }Œ`(OŠp)
+
+	/* «ƒ^ƒCƒgƒ‹« */
+	"data/TEXTURE/Title/BG.png",		// ”wŒi
+	"data/TEXTURE/Title/Snake.png",		// Ö
 };
 }
 
