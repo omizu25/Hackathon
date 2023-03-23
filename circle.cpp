@@ -87,7 +87,7 @@ void CCircle::Init()
 	CObject3D::SetCol(m_changeCol);
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_Enemy);
+	CObject3D::SetTexture(CTexture::LABEL_Shape_Circle);
 }
 
 //--------------------------------------------------
@@ -128,6 +128,10 @@ void CCircle::Update()
 
 			pos.x = FloatRandom(width, -width);
 			pos.y = FloatRandom(height, -height);
+
+			float size = FloatRandom(STD_SIZE, STD_SIZE * 0.25f);
+
+			SetSize(D3DXVECTOR3(size, size, 0.0f));
 
 			SetPos(pos);
 		}
