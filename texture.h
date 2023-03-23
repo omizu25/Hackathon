@@ -16,13 +16,16 @@ class CTexture
 public:
 	enum ELabel
 	{
-		LABEL_NONE = -1,	// 使用しない
-		LABEL_Effect = 0,	// エフェクト
-		LABEL_Cursor,		// カーソル
-		LABEL_Number,		// 数字
-		LABEL_Enemy,		// 敵
-		LABEL_Player,		// プレイヤー
-		LABEL_UI_Stake,		// 蛇の数(UI)
+		LABEL_NONE = -1,		// 使用しない
+		LABEL_Effect = 0,		// エフェクト
+		LABEL_Cursor,			// カーソル
+		LABEL_Number,			// 数字
+		LABEL_Enemy,			// 敵
+		LABEL_Player,			// プレイヤー
+		LABEL_UI_Stake,			// 蛇の数(UI)
+		LABEL_Shape_Circle,		// 図形(円)
+		LABEL_Shape_Square,		// 図形(四角)
+		LABEL_Shape_Triangle,	// 図形(三角)
 		LABEL_MAX
 	};
 

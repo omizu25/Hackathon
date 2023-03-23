@@ -18,12 +18,15 @@ namespace
 {
 const string FILE_PATH[] =
 {// テクスチャのパス
-	"data/TEXTURE/effect.png",		// エフェクト
-	"data/TEXTURE/Cursor.png",		// カーソル
-	"data/TEXTURE/Number.png",		// 数字
-	"data/TEXTURE/Enemy.png",		// 敵
-	"data/TEXTURE/Player.png",		// プレイヤー
-	"data/TEXTURE/UI_Snake.png",	// 蛇の数(UI)
+	"data/TEXTURE/effect.png",			// エフェクト
+	"data/TEXTURE/Cursor.png",			// カーソル
+	"data/TEXTURE/Number.png",			// 数字
+	"data/TEXTURE/Enemy.png",			// 敵
+	"data/TEXTURE/Player.png",			// プレイヤー
+	"data/TEXTURE/UI_Snake.png",		// 蛇の数(UI)
+	"data/TEXTURE/Shape_Circle.png",	// 図形(円)
+	"data/TEXTURE/Shape_Square.png",	// 図形(四角)
+	"data/TEXTURE/Shape_Triangle.png",	// 図形(三角)
 };
 }
 
