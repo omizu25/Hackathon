@@ -17,6 +17,8 @@
 #include "game.h"
 #include "ranking_ui.h"
 #include "effect.h"
+#include "utility.h"
+#include "sound.h"
 
 //==================================================
 // ’è‹`
@@ -173,6 +175,7 @@ void CReturn::Update()
 		{
 			CEffect::Enemy(pos);
 			CEffect::Bom(pos);
+			CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Explosion);
 			m_effect = true;
 		}
 	}

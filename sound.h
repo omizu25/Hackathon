@@ -28,6 +28,7 @@ public:
 		LABEL_SE_Waring,		// ŽžŠÔ§ŒÀ
 		LABEL_SE_Danger,		// ŠëŒ¯M†
 		LABEL_SE_Explosion,		// ”š”­
+		LABEL_SE_Deth,			// Ž€–S
 		LABEL_MAX,
 	};
 

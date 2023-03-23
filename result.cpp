@@ -90,22 +90,6 @@ void CResult::Init()
 		pLeft->SetTexture(CTexture::LABEL_RESULT_CaveRight);
 	}
 
-	//{// 蛇
-	//	CObject2D* pSnake = CObject2D::Create();
-
-	//	// 位置の設定
-	//	pSnake->SetPos(D3DXVECTOR3(300.0f, 365.0f, 0.0f));
-
-	//	// サイズの設定
-	//	pSnake->SetSize(D3DXVECTOR3(500.0f, 200.0f, 0.0f));
-
-	//	// 色の設定
-	//	pSnake->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
-
-	//	// テクスチャの設定
-	//	pSnake->SetTexture(CTexture::LABEL_RESULT_SnakeAnim);
-	//}
-
 	CReturn::CreateAll();
 
 	//曲の再生
@@ -129,14 +113,6 @@ void CResult::Uninit()
 //--------------------------------------------------
 void CResult::Update()
 {
-	CInput* pInput = CInput::GetKey();
-
-	if (pInput->Trigger(DIK_F1))
-	{// キーが押された
-		// モードの変更
-		CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_RANKING);
-	}
-
 	CReturn::AddMove();
 }
 
