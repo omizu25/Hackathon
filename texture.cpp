@@ -18,10 +18,11 @@ namespace
 {
 const string FILE_PATH[] =
 {// テクスチャのパス
-	"data/TEXTURE/effect.png",	// エフェクト
-	"data/TEXTURE/Cursor.png",	// カーソル
-	"data/TEXTURE/Number.png",	// 数字
-	"data/TEXTURE/Enemy.png",	// 敵
+	"data/TEXTURE/effect.png",		// エフェクト
+	"data/TEXTURE/Cursor.png",		// カーソル
+	"data/TEXTURE/Number.png",		// 数字
+	"data/TEXTURE/Enemy.png",		// 敵
+	"data/TEXTURE/UI_Snake.png",	// 蛇の数(UI)
 };
 }
 

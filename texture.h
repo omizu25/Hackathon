@@ -21,6 +21,7 @@ public:
 		LABEL_Cursor,		// ƒJ[ƒ\ƒ‹
 		LABEL_Number,		// ”š
 		LABEL_Enemy,		// “G
+		LABEL_UI_Stake,		// Ö‚Ì”(UI)
 		LABEL_MAX
 	};
 
