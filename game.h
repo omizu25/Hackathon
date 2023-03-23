@@ -31,11 +31,14 @@ public:
 public:
 	CPlayer* GetPlayer();	// プレイヤーの取得
 	CCircle* GetCircle();	// プレイヤーの取得
+	void AddScore(int score);	// プレイヤーの取得
+	int GetScore();	// プレイヤーの取得
 
 	/* ↓静的メンバ変数↓ */
 private:
 	static CPlayer* m_pPlayer;	//プレイヤー
 	static CCircle* m_pCircle;	//プレイヤー
+	static int m_score;
 
 	/* ↓メンバ関数↓ */
 public:

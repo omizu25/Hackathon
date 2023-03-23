@@ -19,12 +19,14 @@
 #include "enemy_manager.h"
 #include "circle.h"
 #include "number_manager.h"
+#include "ranking_ui.h"
 
 //==================================================
 // 静的メンバ変数宣言
 //==================================================
 CPlayer* CGame::m_pPlayer = nullptr;	//プレイヤー
 CCircle* CGame::m_pCircle = nullptr;	//プレイヤー
+int CGame::m_score = 0;
 
 //==================================================
 // 定義
@@ -64,12 +66,29 @@ CCircle* CGame::GetCircle()
 }
 
 //--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+void CGame::AddScore(int score)
+{
+	m_score += score;
+}
+
+//--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+int CGame::GetScore()
+{
+	return m_score;
+}
+
+//--------------------------------------------------
 // 初期化
 //--------------------------------------------------
 void CGame::Init()
 {
 	//各メンバ変数の初期化
 	m_time = 0;
+	m_score = 0;
 	m_bUse_SE = false;
 
 	{// 背景
@@ -82,10 +101,10 @@ void CGame::Init()
 		pObj->SetSize(D3DXVECTOR3((float)CApplication::SCREEN_WIDTH, (float)CApplication::SCREEN_HEIGHT, 0.0f));
 
 		// 色の設定
-		pObj->SetCol(D3DXCOLOR(0.25f, 0.25f, 0.25f, 1.0f));
+		pObj->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 		// テクスチャの設定
-		pObj->SetTexture(CTexture::LABEL_NONE);
+		pObj->SetTexture(CTexture::LABEL_Frame_Space);
 	}
 
 	{// スコア
@@ -96,10 +115,10 @@ void CGame::Init()
 		m_pTime = CNumberManager::Create(pos, size, 30);
 
 		//スコア用UIの生成
-		CObject3D* pScore = CObject3D::Create();
+		CObject2D* pScore = CObject2D::Create();
 
 		// 位置の設定
-		pScore->SetPos(D3DXVECTOR3(420.0f, 290.0f, 0.0f));
+		pScore->SetPos(D3DXVECTOR3(1045.0f, 65.0f, 0.0f));
 
 		// サイズの設定
 		pScore->SetSize(D3DXVECTOR3(170.0f, 170.0f, 0.0f));
@@ -119,10 +138,10 @@ void CGame::Init()
 		m_pScore = CNumberManager::Create(pos, size, 0);
 
 		//タイム用UIの生成
-		CObject3D* pTime = CObject3D::Create();
+		CObject2D* pTime = CObject2D::Create();
 
 		// 位置の設定
-		pTime->SetPos(D3DXVECTOR3(-520.0f, 290.0f, 0.0f));
+		pTime->SetPos(D3DXVECTOR3(120.0f, 68.0f, 0.0f));
 
 		// サイズの設定
 		pTime->SetSize(D3DXVECTOR3(200.0f, 150.0f, 0.0f));
@@ -159,6 +178,9 @@ void CGame::Uninit()
 	// 曲の停止
 	CApplication::GetInstance()->GetSound()->Stop();
 
+	// スコアの設定
+	CRankingUI::SetScore(m_score);
+
 	// 解放
 	Release();
 }
@@ -185,10 +207,14 @@ void CGame::Update()
 
 		if (m_pTime->Get() <= 0)
 		{
+			m_pTime->Set(0);
+
 			// モードの変更
 			CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_RESULT);
 		}
 	}
+
+	m_pScore->Set(m_score);
 
 #ifdef _DEBUG
 	CInput* pInput = CInput::GetKey();

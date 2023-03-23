@@ -22,7 +22,13 @@ namespace
 {
 const int MIN_INTERVAL = 30;	// 間隔の最小値
 const int MAX_INTERVAL = 120;	// 間隔の最大値
+const int MAX_POP = 5;			// 敵の出現数の最大値
 }
+
+//==================================================
+// 静的メンバ変数宣言
+//==================================================
+int CEnemyManager::m_pop = 0;	//出現数
 
 //--------------------------------------------------
 // 生成
@@ -47,7 +53,6 @@ CEnemyManager* CEnemyManager::Create()
 //--------------------------------------------------
 CEnemyManager::CEnemyManager() : CObject(CObject::PRIORITY_SYSTEM),
 	m_time(0),
-	m_pop(0),
 	m_interval(0)
 {
 }
@@ -118,10 +123,15 @@ void CEnemyManager::Game()
 	pos.x = FloatRandom(width, -width);
 	pos.y = FloatRandom(height, -height);
 
-	// 生成
-	CSnakeHead::Create(pos);
+	if (m_pop < MAX_POP)
+	{//最大数以内なら
+		// 生成
+		CSnakeHead::Create(pos);
 
-	m_pop++;
+		m_pop++;
+
+	}
+
 	m_interval--;
 
 	if (m_interval <= MIN_INTERVAL)
