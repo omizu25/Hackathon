@@ -26,6 +26,7 @@ namespace
 // 静的メンバ変数
 //-----------------------------
 bool CPlayer::m_kill = false;
+int CPlayer::m_life = 0;
 
 //===============================
 // コンストラクタ
@@ -35,6 +36,8 @@ CPlayer::CPlayer()
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//位置
 	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//移動量
 	m_size = D3DXVECTOR3(0.0f, 0.0f, 0.0f);	//大きさ
+	m_time = 0;
+	m_interval = false;
 }
 
 //===============================
@@ -49,6 +52,8 @@ CPlayer::~CPlayer()
 //===============================
 void CPlayer::Init()
 {
+	m_kill = true;
+
 	//オブジェクトの初期化
 	CObject3D::Init();
 
@@ -78,6 +83,45 @@ void CPlayer::Update()
 {
 	//オブジェクトの更新
 	CObject3D::Update();
+
+	if (m_interval)
+	{
+		m_time++;
+
+		if (m_time >= 10)
+		{
+			m_kill = true;
+			m_interval = false;
+			m_time = 0;
+		}
+
+		return;
+	}
+
+	if (m_kill)
+	{
+		m_time++;
+
+		// 色の取得
+		D3DXCOLOR col = CObject3D::GetCol();
+
+		col.a = SinCurve(m_time, 0.1f);
+
+		// 色の設定
+		CObject3D::SetCol(col);
+
+		if (m_time >= 30)
+		{
+			m_kill = false;
+			m_interval = false;
+			m_time = 0;
+		}
+
+		return;
+	}
+
+	// 色の設定
+	CObject3D::SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
 
 	//移動
 	D3DXVECTOR3 move = Move(DIK_W, DIK_S, DIK_A, DIK_D);
@@ -135,9 +179,30 @@ CPlayer* CPlayer::Create()
 //===============================
 // 設定
 //===============================
-void CPlayer::SetKill(bool kill)
+void CPlayer::SetKill()
 {
-	m_kill = kill;
+	if (m_interval)
+	{
+		return;
+	}
+
+	if (m_kill)
+	{
+		return;
+	}
+
+	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	//位置を設定
+	CObject3D::SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+
+	// 色の設定
+	CObject3D::SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f));
+
+	m_kill = true;
+	m_interval = true;
+	m_life--;
+	m_time = 0;
 }
 
 //===============================
@@ -146,6 +211,22 @@ void CPlayer::SetKill(bool kill)
 bool CPlayer::GetKill()
 {
 	return m_kill;
+}
+
+//===============================
+// 設定
+//===============================
+void CPlayer::SetLife()
+{
+	m_life = 3;
+}
+
+//===============================
+// 取得
+//===============================
+int CPlayer::GetLife()
+{
+	return m_life;
 }
 
 //===============================
