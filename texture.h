@@ -27,6 +27,8 @@ public:
 		LABEL_Shape_Circle,		// 図形(円)
 		LABEL_Shape_Square,		// 図形(四角)
 		LABEL_Shape_Triangle,	// 図形(三角)
+		LABEL_Time,				// タイム
+		LABEL_Life,				// ライフ
 
 		/* ↓タイトル↓ */
 		LABEL_TITLE_BG,			// 背景

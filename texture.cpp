@@ -28,6 +28,8 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Shape_Circle.png",	// 図形(円)
 	"data/TEXTURE/Shape_Square.png",	// 図形(四角)
 	"data/TEXTURE/Shape_Triangle.png",	// 図形(三角)
+	"data/TEXTURE/Time.png",			// タイム
+	"data/TEXTURE/Life.png",			// ライフ
 
 	/* ↓タイトル↓ */
 	"data/TEXTURE/Title/BG.png",			// 背景
