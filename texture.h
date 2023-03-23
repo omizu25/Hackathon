@@ -44,6 +44,11 @@ public:
 		LABEL_RANKING_LOGO,		// ロゴ
 		LABEL_RANKING_RETURN_LOGO,		// リターンロゴ
 		LABEL_RANKING_GO_LOGO,		// リターンロゴ
+
+		/* ↓リザルト↓ */
+		LABEL_RESULT_SnakeAnim,		//アニメーション蛇
+		LABEL_RESULT_CaveRight,		//洞穴(右)
+		LABEL_RESULT_CaveLeft,		//洞穴(左)
 		LABEL_MAX
 	};
 
