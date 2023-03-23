@@ -53,8 +53,10 @@ CCircle* CCircle::Create()
 //--------------------------------------------------
 CCircle::CCircle() :
 	m_time(0),
+	m_size(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_changeCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f)),
-	m_appear(false)
+	m_appear(false),
+	m_nowAppear(false)
 {
 }
 
@@ -71,8 +73,9 @@ CCircle::~CCircle()
 void CCircle::Init()
 {
 	m_time = 0;
-	m_changeCol = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.0f);
+	m_size = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_appear = false;
+	m_nowAppear = false;
 
 	// 初期化
 	CObject3D::Init();
@@ -81,13 +84,10 @@ void CCircle::Init()
 	CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
 	// サイズの設定
-	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
-
-	// 色の設定
-	CObject3D::SetCol(m_changeCol);
+	CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_Shape_Circle);
+	CObject3D::SetTexture(CTexture::LABEL_circle);
 }
 
 //--------------------------------------------------
@@ -111,37 +111,34 @@ void CCircle::Update()
 
 	m_time++;
 
-	if (m_time >= STD_TIME)
+	if (!m_nowAppear)
 	{
-		m_time = 0;
-		m_appear = !m_appear;
-		D3DXCOLOR col = GetCol();
-
-		if (m_appear)
+		if (m_time >= STD_TIME)
 		{
-			col.a = 1.0f;
+			m_time = 0;
+			m_nowAppear = true;
+			m_appear = !m_appear;
 
-			float width = (float)CApplication::SCREEN_WIDTH * 0.35f;
-			float height = (float)CApplication::SCREEN_HEIGHT * 0.35f;
+			if (m_appear)
+			{
+				float size = FloatRandom(STD_SIZE, STD_SIZE * 0.25f);
+				m_size = D3DXVECTOR3(size, size, 0.0f);
 
-			D3DXVECTOR3 pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+				float width = (float)CApplication::SCREEN_WIDTH * 0.35f;
+				float height = (float)CApplication::SCREEN_HEIGHT * 0.35f;
 
-			pos.x = FloatRandom(width, -width);
-			pos.y = FloatRandom(height, -height);
+				D3DXVECTOR3 pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
-			float size = FloatRandom(STD_SIZE, STD_SIZE * 0.25f);
+				pos.x = FloatRandom(width, -width);
+				pos.y = FloatRandom(height, -height);
 
-			SetSize(D3DXVECTOR3(size, size, 0.0f));
-
-			SetPos(pos);
+				SetPos(pos);
+			}
 		}
-		else
-		{
-			col.a = 0.0f;
-		}
-
-		CObject3D::SetCol(col);
-
+	}
+	else
+	{
+		Appear();
 	}
 
 	// 更新
@@ -170,4 +167,39 @@ bool CCircle::GetCollision()
 //--------------------------------------------------
 void CCircle::Appear()
 {
+	if (m_appear)
+	{
+		D3DXVECTOR3 size = GetSize();
+
+		size.x += (m_size.x / STD_TIME);
+		size.y += (m_size.y / STD_TIME);
+
+		if (m_time >= STD_TIME)
+		{
+			m_time = 0;
+			m_nowAppear = false;
+
+			size = m_size;
+		}
+		
+		SetSize(size);
+	}
+	else
+	{
+		D3DXVECTOR3 size = GetSize();
+
+		size.x -= (m_size.x / STD_TIME);
+		size.y -= (m_size.y / STD_TIME);
+
+		if (m_time >= STD_TIME)
+		{
+			m_time = 0;
+			m_nowAppear = false;
+
+			size.x = 0.0f;
+			size.y = 0.0f;
+		}
+
+		SetSize(size);
+	}
 }
