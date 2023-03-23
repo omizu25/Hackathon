@@ -12,7 +12,10 @@
 #include "input.h"
 #include "application.h"
 #include "utility.h"
+#include "fade.h"
+#include "mode.h"
 #include "sound.h"
+#include "effect.h"
 
 //-----------------------------
 // 定義
@@ -94,6 +97,7 @@ void CPlayer::Update()
 
 		if (m_time >= 10)
 		{
+			
 			CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Hit);
 			m_kill = true;
 			m_interval = false;
@@ -117,6 +121,7 @@ void CPlayer::Update()
 
 		if (m_time >= 30)
 		{
+			CEffect::Bom(m_pos);
 			m_kill = false;
 			m_interval = false;
 			m_time = 0;
@@ -196,6 +201,7 @@ void CPlayer::SetKill()
 		return;
 	}
 
+	CEffect::Player(m_pos);
 	m_pos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	//位置を設定
@@ -208,6 +214,12 @@ void CPlayer::SetKill()
 	m_interval = true;
 	m_life--;
 	m_time = 0;
+
+	if (m_life <= 0)
+	{
+		// モードの変更
+		CApplication::GetInstance()->GetFade()->ChangeMode(CMode::MODE_RESULT);
+	}
 }
 
 //===============================
