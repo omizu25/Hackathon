@@ -19,7 +19,7 @@
 namespace
 {
 const int STD_TIME = 100;
-const float STD_SIZE = 400.0f;	// サイズ
+const float STD_SIZE = 300.0f;	// サイズ
 }
 
 const int CCircle::COUNTDOWN_TIME = 120;
