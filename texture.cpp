@@ -51,6 +51,9 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Result/Snake_Anim.png",	//アニメーション蛇
 	"data/TEXTURE/Result/Cave_Right.png",	//洞穴(右)
 	"data/TEXTURE/Result/Cave_Left.png",	//洞穴(左)
+
+	/* ↓チュートリアル↓ */
+	"data/TEXTURE/Tutorial/BG.png",			//チュートリアル画像
 };
 }
 

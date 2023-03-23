@@ -12,6 +12,7 @@
 #include "input.h"
 #include "application.h"
 #include "utility.h"
+#include "sound.h"
 
 //-----------------------------
 // ’è‹`
@@ -90,6 +91,7 @@ void CPlayer::Update()
 
 		if (m_time >= 10)
 		{
+			CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Hit);
 			m_kill = true;
 			m_interval = false;
 			m_time = 0;
