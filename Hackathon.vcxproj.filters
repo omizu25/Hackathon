@@ -136,6 +136,9 @@
     <ClCompile Include="circle.cpp">
       <Filter>Object\3D</Filter>
     </ClCompile>
+    <ClCompile Include="return.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
@@ -239,6 +242,9 @@
       <Filter>Object\3D</Filter>
     </ClInclude>
     <ClInclude Include="circle.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="return.h">
       <Filter>Object\3D</Filter>
     </ClInclude>
   </ItemGroup>

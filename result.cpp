@@ -14,6 +14,7 @@
 #include "application.h"
 #include "object3D.h"
 #include "fade.h"
+#include "return.h"
 
 //==================================================
 // 定義
@@ -57,6 +58,9 @@ void CResult::Init()
 		pObj->SetTexture(CTexture::LABEL_NONE);
 	}
 
+	CReturn::CreateAll();
+
+
 	//曲の再生
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Result);
 }
@@ -85,6 +89,8 @@ void CResult::Update()
 		// モードの変更
 		CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_RANKING);
 	}
+
+	CReturn::AddMove();
 }
 
 //--------------------------------------------------
