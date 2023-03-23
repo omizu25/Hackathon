@@ -20,6 +20,7 @@ public:
 		LABEL_BGM_Title = 0,	// タイトル
 		LABEL_BGM_Game,			// ゲーム
 		LABEL_BGM_Result,		// リザルト
+		LABEL_BGM_Ranking,		// ランキング
 		LABEL_SE_Enter,			// 決定
 		LABEL_SE_Select,		// 選択
 		LABEL_SE_Hit,			// 当たったときの判定

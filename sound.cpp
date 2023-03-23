@@ -26,6 +26,7 @@ const SParam PARAM[] =
 	{ "data/BGM/Title.wav", -1 },				// タイトル
 	{ "data/BGM/Devil_Disaster.wav", -1 },		// ゲーム
 	{ "data/BGM/Result.wav", -1 },				// リザルト
+	{ "data/BGM/a_beautiful_sunset.wav", -1 },	// 命危険
 	{ "data/SE/Enter.wav", 0 },					// 決定
 	{ "data/SE/Select.wav", 0 },				// 選択
 	{ "data/SE/Hit.wav", 0 },					// 当たったとき

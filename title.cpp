@@ -155,5 +155,5 @@ void CTitle::Input()
 	}
 
 	// ƒ‚[ƒh‚Ì•ÏX
-	CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_GAME);
+	CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_TUTORIAL);
 }
