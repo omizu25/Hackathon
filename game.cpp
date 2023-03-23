@@ -16,6 +16,7 @@
 #include "object3D.h"
 #include "effect.h"
 #include "player.h"
+#include "enemy_manager.h"
 
 //==================================================
 // 静的メンバ変数宣言
@@ -44,6 +45,14 @@ CGame::~CGame()
 }
 
 //--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+CPlayer* CGame::GetPlayer()
+{
+	return m_pPlayer;
+}
+
+//--------------------------------------------------
 // 初期化
 //--------------------------------------------------
 void CGame::Init()
@@ -66,6 +75,9 @@ void CGame::Init()
 		//プレイヤーの生成
 		m_pPlayer = CPlayer::Create();
 	}
+
+	// 生成
+	CEnemyManager::Create();
 
 	// 曲の再生
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);}

@@ -11,13 +11,16 @@
 #include "enemy.h"
 #include "application.h"
 #include "utility.h"
+#include "player.h"
+#include "game.h"
 
 //==================================================
 // 定義
 //==================================================
 namespace
 {
-const float STD_MOVE = 10.0f;	// 移動速度
+const int STD_TIME = 90;		// 発生時間
+const float STD_MOVE = 5.0f;	// 移動速度
 const float STD_SIZE = 40.0f;	// サイズ
 }
 
@@ -47,7 +50,8 @@ CEnemy* CEnemy::Create(const D3DXVECTOR3& pos, float rot)
 // デフォルトコンストラクタ
 //--------------------------------------------------
 CEnemy::CEnemy() :
-	m_move(D3DXVECTOR3(0.0f, 0.0f, 0.0f))
+	m_move(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+	m_time(0)
 {
 }
 
@@ -63,6 +67,7 @@ CEnemy::~CEnemy()
 //--------------------------------------------------
 void CEnemy::Init()
 {
+	m_time = 0;
 	m_move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
 	// 初期化
@@ -83,44 +88,41 @@ void CEnemy::Uninit()
 //--------------------------------------------------
 void CEnemy::Update()
 {
-	//{
-	//	int time = CEnemy::GetTime();
+	m_time++;
 
-	//	if (time <= CEnemy::CREATE_TIME)
-	//	{// 生成時間中
+	if (m_time <= STD_TIME)
+	{// 生成時間中
 
-	//		// 色の取得
-	//		D3DXCOLOR col = CObject3D::GetCol();
+		// 色の取得
+		D3DXCOLOR col = CObject3D::GetCol();
 
-	//		col.a = SinCurve(time, 0.1f);
+		col.a = SinCurve(m_time, 0.1f);
 
-	//		// 色の設定
-	//		CObject3D::SetCol(col);
+		// 色の設定
+		CObject3D::SetCol(col);
 
-	//		// 当たり判定の設定
-	//		CObject3D::SetCollision(false);
+		// 更新
+		CObject3D::Update();
+		return;
+	}
+	else
+	{
+		D3DXCOLOR col = CObject3D::GetCol();
 
-	//		// 更新
-	//		CEnemy::Update();
-	//		return;
-	//	}
+		col.a = 1.0f;
 
-	//	// 当たり判定の設定
-	//	CObject3D::SetCollision(true);
+		// 色の設定
+		CObject3D::SetCol(col);
 
-	//	D3DXCOLOR col = CObject3D::GetCol();
+		// 移動
+		Move();
 
-	//	col.a = 1.0f;
+		// 当たり判定
+		Collision();
 
-	//	// 色の設定
-	//	CObject3D::SetCol(col);
-	//}
-
-	// 移動
-	Move();
-
-	// 更新
-	CObject3D::Update();
+		// 更新
+		CObject3D::Update();
+	}
 }
 
 //--------------------------------------------------
@@ -146,9 +148,6 @@ void CEnemy::Set(const D3DXVECTOR3& pos, float rot)
 	// サイズの設定
 	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
 
-	// 色の設定
-	CObject3D::SetCol(D3DXCOLOR(1.0f, 0.0f, 1.0f, 1.0f));
-
 	// テクスチャの設定
 	CObject3D::SetTexture(CTexture::LABEL_Enemy);
 }
@@ -171,4 +170,28 @@ void CEnemy::Move()
 
 	// 位置の設定
 	CObject3D::SetPos(pos);
+}
+
+//--------------------------------------------------
+// 当たり判定
+//--------------------------------------------------
+void CEnemy::Collision()
+{
+	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
+	CPlayer* pPlayer = pGame->GetPlayer();
+
+	if (pPlayer == nullptr)
+	{// nullチェック
+		return;
+	}
+
+	D3DXVECTOR3 pos = CObject3D::GetPos();
+	float size = STD_SIZE * 0.5f;
+	D3DXVECTOR3 targetPos = pPlayer->GetPos();
+	float targetSize = pPlayer->GetSize().x * 0.5f;
+
+	if (CollisionCircle(pos, size, targetPos, targetSize))
+	{// 当たり判定
+		pPlayer->SetRelease();
+	}
 }

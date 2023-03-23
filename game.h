@@ -25,6 +25,10 @@ class CGame : public CMode
 	/* 定義 */
 public:
 
+	/* ↓静的メンバ関数↓ */
+public:
+	CPlayer* GetPlayer();	// プレイヤーの取得
+
 	/* ↓メンバ関数↓ */
 public:
 	CGame();			// デフォルトコンストラクタ
