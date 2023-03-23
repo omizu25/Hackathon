@@ -25,6 +25,7 @@
 //==================================================
 CPlayer* CGame::m_pPlayer = nullptr;	//プレイヤー
 CCircle* CGame::m_pCircle = nullptr;	//プレイヤー
+int CGame::m_score = 0;
 
 //==================================================
 // 定義
@@ -64,12 +65,29 @@ CCircle* CGame::GetCircle()
 }
 
 //--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+void CGame::AddScore(int score)
+{
+	m_score += score;
+}
+
+//--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+int CGame::GetScore()
+{
+	return m_score;
+}
+
+//--------------------------------------------------
 // 初期化
 //--------------------------------------------------
 void CGame::Init()
 {
 	//各メンバ変数の初期化
 	m_time = 0;
+	m_score = 0;
 	m_bUse_SE = false;
 
 	{// 背景
@@ -185,10 +203,14 @@ void CGame::Update()
 
 		if (m_pTime->Get() <= 0)
 		{
+			m_pTime->Set(0);
+
 			// モードの変更
 			CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_RESULT);
 		}
 	}
+
+	m_pScore->Set(m_score);
 
 #ifdef _DEBUG
 	CInput* pInput = CInput::GetKey();
