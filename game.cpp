@@ -90,6 +90,7 @@ void CGame::Init()
 	m_time = 0;
 	m_score = 0;
 	m_bUse_SE = false;
+	m_bDath = false;
 
 	{// ”wŒi
 		CObject3D* pObj = CObject3D::Create();
@@ -256,5 +257,12 @@ void CGame::DeathPlayer()
 	for (int i = 2; i > nLife - 1; i--)
 	{
 		pObjPlayer[i]->SetRelease();
+	}
+
+	if (nLife <= 1 &&
+		!m_bDath)
+	{
+		CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Danger);
+		m_bDath = true;
 	}
 }
