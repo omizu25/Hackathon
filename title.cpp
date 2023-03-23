@@ -62,18 +62,31 @@ void CTitle::Init()
 		pObj->SetTexture(CTexture::LABEL_TITLE_BG);
 	}
 
+	{// ロゴ
+		CObject3D* pObj = CObject3D::Create();
+
+		// 位置の設定
+		pObj->SetPos(D3DXVECTOR3(0.0f, 160.0f, 0.0f));
+
+		// サイズの設定
+		pObj->SetSize(D3DXVECTOR3(1000.0f, 300.0f, 0.0f));
+
+		// 色の設定
+		pObj->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+
+		// テクスチャの設定
+		pObj->SetTexture(CTexture::LABEL_TITLE_LOGO);
+	}
+
 	{// メニュー
 		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.5f, (float)CApplication::SCREEN_HEIGHT * 0.75f, 0.0f);
-		D3DXVECTOR3 size = D3DXVECTOR3(450.0f, 100.0f, 0.0f);
+		D3DXVECTOR3 size = D3DXVECTOR3(650.0f, 100.0f, 0.0f);
 
 		// 生成
 		m_pMenu = CMenu::Create(pos, size, 1, 50.0f);
 
 		// 枠の設定
 		m_pMenu->SetFrame(pos, D3DXVECTOR3((float)CApplication::SCREEN_WIDTH, 200.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));
-
-		// カーソルの設定
-		m_pMenu->SetCursor(D3DXVECTOR3(50.0f, 50.0f, 0.0f), 20.0f);
 
 		// テクスチャの設定
 		m_pMenu->SetTexture(0, CTexture::LABEL_TITLE_PressEnter);
