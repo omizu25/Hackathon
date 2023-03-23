@@ -42,6 +42,8 @@ public:
 
 		/* ↓タイトル↓ */
 		LABEL_RANKING_LOGO,		// ロゴ
+		LABEL_RANKING_RETURN_LOGO,		// リターンロゴ
+		LABEL_RANKING_GO_LOGO,		// リターンロゴ
 		LABEL_MAX
 	};
 

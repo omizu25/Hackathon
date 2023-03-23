@@ -43,6 +43,8 @@ const string FILE_PATH[] =
 
 	/* «ƒ‰ƒ“ƒLƒ“ƒO« */
 	"data/TEXTURE/Ranking/RankingLogo.png",			// ƒƒS
+	"data/TEXTURE/Ranking/RankingReturnLogo.png",	// ƒƒS
+	"data/TEXTURE/Ranking/RankingGoLogo.png",	// ƒƒS
 };
 }
 

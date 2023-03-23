@@ -111,7 +111,7 @@ void CGame::Init()
 
 	{// タイム
 		D3DXVECTOR3 size = D3DXVECTOR3(50.0f, 100.0f, 0.0f);
-		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.5f, size.y * 0.5f, 0.0f);
+		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.27f, size.y * 0.65f, 0.0f);
 
 		// 生成
 		m_pScore = CNumberManager::Create(pos, size, 0);
@@ -120,10 +120,10 @@ void CGame::Init()
 		CObject3D* pTime = CObject3D::Create();
 
 		// 位置の設定
-		pTime->SetPos(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
+		pTime->SetPos(D3DXVECTOR3(-520.0f, 290.0f, 0.0f));
 
 		// サイズの設定
-		pTime->SetSize(D3DXVECTOR3(200.0f, 170.0f, 0.0f));
+		pTime->SetSize(D3DXVECTOR3(200.0f, 150.0f, 0.0f));
 
 		// 色の設定
 		pTime->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));

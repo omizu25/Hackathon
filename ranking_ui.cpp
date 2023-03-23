@@ -19,10 +19,10 @@
 //==================================================
 namespace
 {
-static const float NUM_WIDTH = 40.0f;	// 数の幅
-static const float NUM_HEIGHT = 50.0f;	// 数の高さ
-static const float RANK_SIZE = 50.0f;	// 位のサイズ
-static const float RANK_INTERVAL = (NUM_WIDTH * CNumberManager::MAX_DIGIT) + NUM_WIDTH;	// 位の間隔
+static const float NUM_WIDTH = 60.0f;	// 数の幅
+static const float NUM_HEIGHT = 80.0f;	// 数の高さ
+static const float RANK_SIZE = 60.0f;	// 位のサイズ
+static const float RANK_INTERVAL = (NUM_WIDTH * CNumberManager::MAX_DIGIT) + (RANK_SIZE * 0.5f);	// 位の間隔
 const string FILE_PATH = "data/TEXT/Ranking.txt";	// テキストのパス
 }
 
