@@ -18,8 +18,10 @@
 //==================================================
 namespace
 {
-const int STD_TIME = 100;
-const float STD_SIZE = 300.0f;	// サイズ
+const int POP_TIME = 60;
+const int APPEARANCE_TIME = 300;
+const int INTERVAL_TIME = 90;
+const float STD_SIZE = 400.0f;	// サイズ
 }
 
 const int CCircle::COUNTDOWN_TIME = 120;
@@ -113,14 +115,23 @@ void CCircle::Update()
 
 	if (!m_nowAppear)
 	{
-		if (m_time >= STD_TIME)
+		if (m_appear)
 		{
-			m_time = 0;
-			m_nowAppear = true;
-			m_appear = !m_appear;
-
-			if (m_appear)
+			if (m_time >= APPEARANCE_TIME)
 			{
+				m_time = 0;
+				m_nowAppear = true;
+				m_appear = false;
+			}
+		}
+		else
+		{
+			if (m_time >= INTERVAL_TIME)
+			{
+				m_time = 0;
+				m_nowAppear = true;
+				m_appear = true;
+
 				float size = FloatRandom(STD_SIZE, STD_SIZE * 0.25f);
 				m_size = D3DXVECTOR3(size, size, 0.0f);
 
@@ -171,10 +182,10 @@ void CCircle::Appear()
 	{
 		D3DXVECTOR3 size = GetSize();
 
-		size.x += (m_size.x / STD_TIME);
-		size.y += (m_size.y / STD_TIME);
+		size.x += (m_size.x / POP_TIME);
+		size.y += (m_size.y / POP_TIME);
 
-		if (m_time >= STD_TIME)
+		if (m_time >= POP_TIME)
 		{
 			m_time = 0;
 			m_nowAppear = false;
@@ -188,10 +199,10 @@ void CCircle::Appear()
 	{
 		D3DXVECTOR3 size = GetSize();
 
-		size.x -= (m_size.x / STD_TIME);
-		size.y -= (m_size.y / STD_TIME);
+		size.x -= (m_size.x / POP_TIME);
+		size.y -= (m_size.y / POP_TIME);
 
-		if (m_time >= STD_TIME)
+		if (m_time >= POP_TIME)
 		{
 			m_time = 0;
 			m_nowAppear = false;

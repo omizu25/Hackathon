@@ -24,9 +24,9 @@ namespace
 const int MAX_BODY = 25;			// 体の最大数
 const int IDX_PARENT = 0;			// 親の番号
 const int STD_TIME = 90;			// 発生時間
-const float STD_SIZE = 90.0f;		// サイズの標準値
+const float STD_SIZE = 30.0f;		// サイズの標準値
 const float OBJ_SIZE = 300.0f;		// サイズの標準値
-const float STD_MOVE = 2.0f;		// 移動量の標準値
+const float STD_MOVE = 1.5f;		// 移動量の標準値
 const float AMPLITUDE_WIDTH = 3.0f;	// 振幅の幅
 const float AMPLITUDE_SPEED = 2.0f;	// 振幅の速度
 }
@@ -280,7 +280,7 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_Enemy_ver3_inside);
+	CObject3D::SetTexture(CTexture::LABEL_Shape_Circle);
 
 	// 移動量の設定
 	SetMove();
@@ -319,19 +319,12 @@ void CSnakeHead::SetMove()
 
 	float sinCurve = sinf(D3DXToRadian(m_time * AMPLITUDE_SPEED)) * AMPLITUDE_WIDTH;
 
-	float speed = STD_MOVE;
-
-	if (!m_chase)
-	{
-		speed *= 0.5f;
-	}
-
-	m_move.x = (sinf(fRotMove) * (speed + FloatRandom(speed, 0.0f))) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
-	m_move.y = (cosf(fRotMove) * (speed + FloatRandom(speed, 0.0f))) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
+	m_move.x = (sinf(fRotMove) * (STD_MOVE + FloatRandom(STD_MOVE, 0.0f))) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
+	m_move.y = (cosf(fRotMove) * (STD_MOVE + FloatRandom(STD_MOVE, 0.0f))) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
 
 	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	move.x = (sinf(fRotMove) * speed) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
-	move.y = (cosf(fRotMove) * speed) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
+	move.x = (sinf(fRotMove) * STD_MOVE) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
+	move.y = (cosf(fRotMove) * STD_MOVE) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
 
 	float rot = atan2f(move.x, move.y);
 
@@ -381,21 +374,6 @@ void CSnakeHead::Target()
 
 		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
 	}
-	else
-	{
-		if (m_time % STD_TIME == 0)
-		{
-			float width = (float)CApplication::SCREEN_WIDTH * 0.5f;
-			float height = (float)CApplication::SCREEN_HEIGHT * 0.5f;
-
-			m_target.x = FloatRandom(width, -width);
-			m_target.y = FloatRandom(height, -height);
-		}
-
-		m_chase = false;
-
-		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
-	}
 
 	SetCol(col);
 }
@@ -414,9 +392,9 @@ void CSnakeHead::PlayerCollision()
 	}
 
 	D3DXVECTOR3 pos = CObject3D::GetPos();
-	float size = STD_SIZE * 0.5f;
+	float size = STD_SIZE * 0.25f;
 	D3DXVECTOR3 targetPos = pPlayer->GetPos();
-	float targetSize = pPlayer->GetSize().x * 0.5f;
+	float targetSize = pPlayer->GetSize().x * 0.25f;
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// 当たり判定
@@ -449,9 +427,9 @@ void CSnakeHead::CircleCollision()
 	}
 
 	D3DXVECTOR3 pos = CObject3D::GetPos();
-	float size = STD_SIZE * 0.5f;
+	float size = STD_SIZE * 0.35f;
 	D3DXVECTOR3 targetPos = pCircle->GetPos();
-	float targetSize = pCircle->GetSize().x * 0.5f;
+	float targetSize = pCircle->GetSize().x * 0.35f;
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// 当たり判定
