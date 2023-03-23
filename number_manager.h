@@ -24,7 +24,7 @@ class CNumberManager : public CObject
 {
 	/* «’è‹`« */
 public:
-	static const int MAX_DIGIT = 5;	// Œ…‚ÌÅ‘å”
+	static const int MAX_DIGIT = 3;	// Œ…‚ÌÅ‘å”
 
 	/* «Ã“Iƒƒ“ƒoŠÖ”« */
 public:
