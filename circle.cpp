@@ -18,7 +18,7 @@
 //==================================================
 namespace
 {
-const int POP_TIME = 60;
+const int POP_TIME = 30;
 const int APPEARANCE_TIME = 300;
 const int INTERVAL_TIME = 90;
 const float STD_SIZE = 400.0f;	// サイズ
@@ -82,9 +82,6 @@ void CCircle::Init()
 	// 初期化
 	CObject3D::Init();
 
-	// 位置の設定
-	CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
-
 	// サイズの設定
 	CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
@@ -108,6 +105,13 @@ void CCircle::Update()
 {
 	if (CPlayer::GetKill())
 	{
+		m_time = 0;
+		m_size = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+		m_appear = false;
+		m_nowAppear = false;
+
+		// サイズの設定
+		CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 		return;
 	}
 

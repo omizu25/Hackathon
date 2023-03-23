@@ -24,7 +24,7 @@ namespace
 {
 const int MAX_BODY = 25;			// 体の最大数
 const int IDX_PARENT = 0;			// 親の番号
-const int STD_TIME = 90;			// 発生時間
+const int STD_TIME = 30;			// 発生時間
 const float STD_SIZE = 30.0f;		// サイズの標準値
 const float OBJ_SIZE = 300.0f;		// サイズの標準値
 const float STD_MOVE = 1.5f;		// 移動量の標準値
@@ -135,6 +135,22 @@ void CSnakeHead::Update()
 {
 	if (CPlayer::GetKill())
 	{
+		CEnemyManager::SubPop();
+		SetRelease();
+
+		for (int i = 0; i < MAX_BODY; i++)
+		{
+			if (m_pBody[i] == nullptr)
+			{// nullチェック
+				continue;
+			}
+
+			// 解放
+			m_pBody[i]->SetRelease();
+		}
+
+		m_pObj->SetRelease();
+
 		return;
 	}
 
@@ -410,8 +426,7 @@ void CSnakeHead::PlayerCollision()
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// 当たり判定
-		pPlayer->SetRelease();
-		CPlayer::SetKill(true);
+		pPlayer->SetKill();
 	}
 }
 
