@@ -34,6 +34,7 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Life.png",				// ライフ
 	"data/TEXTURE/Frame_Space.png",			// 宇宙フレーム
 	"data/TEXTURE/circle.png",				// サークル
+	"data/TEXTURE/Number_Rank.png",			// 位
 
 	/* ↓タイトル↓ */
 	"data/TEXTURE/Title/BG.png",			// 背景
@@ -48,8 +49,8 @@ const string FILE_PATH[] =
 
 	/* ↓リザルト↓ */
 	"data/TEXTURE/Result/Snake_Anim.png",	//アニメーション蛇
-	"data/TEXTURE/Result/Cave_Right",		//洞穴(右)
-	"data/TEXTURE/Result/Cave_Left",		//洞穴(左)
+	"data/TEXTURE/Result/Cave_Right.png",	//洞穴(右)
+	"data/TEXTURE/Result/Cave_Left.png",	//洞穴(左)
 };
 }
 

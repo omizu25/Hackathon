@@ -23,14 +23,14 @@ struct SParam
 
 const SParam PARAM[] =
 {// パラメータの情報
-	{ "data/BGM/Title.wav", -1 },		// タイトル
-	{ "data/BGM/Game.wav", -1 },		// ゲーム
-	{ "data/BGM/Result.wav", -1 },		// リザルト
-	{ "data/SE/Enter.wav", 0 },			// 決定
-	{ "data/SE/Select.wav", 0 },		// 選択
-	{ "data/SE/Hit.wav", 0 },			// 当たったとき
-	{ "data/SE/Warning.wav", 0 },		// 危険
-	{ "data/SE/life_danger.wav", 0 },	// 命危険
+	{ "data/BGM/Title.wav", -1 },				// タイトル
+	{ "data/BGM/Devil_Disaster.wav", -1 },		// ゲーム
+	{ "data/BGM/Result.wav", -1 },				// リザルト
+	{ "data/SE/Enter.wav", 0 },					// 決定
+	{ "data/SE/Select.wav", 0 },				// 選択
+	{ "data/SE/Hit.wav", 0 },					// 当たったとき
+	{ "data/SE/Warning.wav", 0 },				// 危険
+	{ "data/SE/life_danger.wav", -1 },			// 命危険
 };
 }
 

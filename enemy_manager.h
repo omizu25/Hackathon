@@ -35,16 +35,16 @@ public:
 	void Update() override;	// 更新
 	void Draw() override;	// 描画
 
-	void SubPop() { m_pop--; }	//出現数の減少
+	static void SubPop() { m_pop--; }	//出現数の減少
 
 private:
 	void Game();	// ゲーム
 
 	/* ↓メンバ変数↓ */
 private:
-	int m_time;		// 時間
-	int m_pop;		// 出現数
-	int m_interval;	// 間隔
+	int m_time;			// 時間
+	int m_interval;		// 間隔
+	static int m_pop;	// 出現数
 };
 
 #endif // !_ENEMY_MANAGER_H_

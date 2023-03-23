@@ -33,6 +33,7 @@ public:
 		LABEL_Life,					// ライフ
 		LABEL_Frame_Space,			// 宇宙フレーム
 		LABEL_circle,				// サークル
+		LABEL_Number_Rank,			// 位
 
 		/* ↓タイトル↓ */
 		LABEL_TITLE_BG,			// 背景

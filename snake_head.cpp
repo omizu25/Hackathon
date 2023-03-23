@@ -15,6 +15,7 @@
 #include "game.h"
 #include "player.h"
 #include "circle.h"
+#include "enemy_manager.h"
 
 //==================================================
 // ’è‹`
@@ -444,6 +445,8 @@ void CSnakeHead::CircleCollision()
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// “–‚½‚è”»’è
+		CEnemyManager::SubPop();
+
 		SetRelease();
 
 		for (int i = 0; i < MAX_BODY; i++)
