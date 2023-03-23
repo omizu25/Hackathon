@@ -22,6 +22,9 @@ public:
 		LABEL_BGM_Result,		// リザルト
 		LABEL_SE_Enter,			// 決定
 		LABEL_SE_Select,		// 選択
+		LABEL_SE_Hit,			// 当たったときの判定
+		LABEL_SE_Waring,		// 時間制限
+		LABEL_SE_Danger,		// 危険信号
 		LABEL_MAX,
 	};
 
