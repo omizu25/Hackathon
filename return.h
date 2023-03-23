@@ -24,6 +24,7 @@ public:
 private:
 	static float m_move;	// 移動量
 	static int m_count;		// カウント
+	static int m_atime;		// カウント
 
 	/* ↓静的メンバ関数↓ */
 public:
@@ -31,6 +32,7 @@ public:
 	static void AddMove();		// 速度の加算
 	static void CreateAll();	// 全ての生成
 	static CReturn* Create(const D3DXVECTOR3& pos);	// 生成
+	static void Fade();
 
 	/* ↓メンバ関数↓ */
 public:

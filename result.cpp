@@ -113,6 +113,8 @@ void CResult::Uninit()
 //--------------------------------------------------
 void CResult::Update()
 {
+	CReturn::Fade();
+
 	CReturn::AddMove();
 }
 

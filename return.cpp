@@ -34,6 +34,7 @@ const float STD_SIZE = 270.0f;
 //==================================================
 float CReturn::m_move = 0.0f;
 int CReturn::m_count = 0;
+int CReturn::m_atime = 0;
 
 //--------------------------------------------------
 // 生成
@@ -58,7 +59,7 @@ void CReturn::CreateAll()
 {
 	m_move = 0.0f;
 	D3DXVECTOR3 pos = D3DXVECTOR3(-STD_SIZE, -120.0f, 0.0f);
-
+	m_atime = 0;
 	m_count = CRankingUI::Get(-1);
 	//m_count = 7;
 
@@ -94,6 +95,21 @@ CReturn* CReturn::Create(const D3DXVECTOR3& pos)
 	return pDomino;
 }
 
+void CReturn::Fade()
+{
+	if (m_count <= 0)
+	{
+		m_atime++;
+
+		if (m_atime >= 60)
+		{
+			// モードの変更
+			CApplication::GetInstance()->GetFade()->ChangeMode(CMode::MODE_RANKING);
+		}
+		
+	}
+}
+
 //--------------------------------------------------
 // デフォルトコンストラクタ
 //--------------------------------------------------
@@ -114,6 +130,7 @@ CReturn::~CReturn()
 void CReturn::Init()
 {
 	m_time = 0;
+	m_atime = 0;
 	u = D3DXVECTOR2(0.0f, 0.5f);
 	m_effect = false;
 
@@ -139,12 +156,6 @@ void CReturn::Uninit()
 	CObject3D::Uninit();
 
 	m_count--;
-
-	if (m_count <= 0)
-	{
-		// モードの変更
-		CApplication::GetInstance()->GetFade()->ChangeMode(CMode::MODE_RANKING);
-	}
 }
 
 //--------------------------------------------------
