@@ -17,6 +17,7 @@
 #include "circle.h"
 #include "enemy_manager.h"
 #include "effect.h"
+#include "sound.h"
 
 //==================================================
 // ’è‹`
@@ -482,5 +483,6 @@ void CSnakeHead::CircleCollision()
 		pGame->AddScore(1);
 
 		CEffect::Explosion(GetPos());
+		CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_DethEnemy);
 	}
 }

@@ -122,6 +122,7 @@ void CPlayer::Update()
 		if (m_time >= 30)
 		{
 			CEffect::Bom(m_pos);
+			CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_SE_Deth);
 			m_kill = false;
 			m_interval = false;
 			m_time = 0;
