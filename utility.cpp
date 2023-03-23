@@ -106,14 +106,14 @@ bool InRange(D3DXVECTOR3* pPos, const D3DXVECTOR3& range)
 		out = true;
 	}
 
-	if (pPos->z >= range.z)
+	if (pPos->y >= range.y)
 	{// ã‚Ì•Ç
-		pPos->z = range.z;
+		pPos->y = range.y;
 		out = true;
 	}
-	else if (pPos->z <= -range.z)
+	else if (pPos->y <= -range.y)
 	{// ‰º‚Ì•Ç
-		pPos->z = -range.z;
+		pPos->y = -range.y;
 		out = true;
 	}
 
@@ -140,16 +140,16 @@ bool InRangeReflect(D3DXVECTOR3* pPos, D3DXVECTOR3* pMove, const D3DXVECTOR3& ra
 		out = true;
 	}
 
-	if (pPos->z >= range.z)
+	if (pPos->y >= range.y)
 	{// ã‚Ì•Ç
-		pPos->z = range.z;
-		pMove->z *= -1.0f;
+		pPos->y = range.y;
+		pMove->y *= -1.0f;
 		out = true;
 	}
-	else if (pPos->z <= -range.z)
+	else if (pPos->y <= -range.y)
 	{// ‰º‚Ì•Ç
-		pPos->z = -range.z;
-		pMove->z *= -1.0f;
+		pPos->y = -range.y;
+		pMove->y *= -1.0f;
 		out = true;
 	}
 
@@ -168,7 +168,7 @@ bool CollisionCircle(const D3DXVECTOR3& pos1, float radius1, const D3DXVECTOR3& 
 	float diffX = pos1.x - pos2.x;
 
 	// Y‚Ì·•ª
-	float diffY = pos1.z - pos2.z;
+	float diffY = pos1.y - pos2.y;
 
 	// Œ»Ý‚Ì‚Q“_‚Ì‹——£
 	float length = sqrtf((diffX * diffX) + (diffY * diffY));
@@ -195,7 +195,7 @@ bool CollisionArea(const D3DXVECTOR3& pos1, float radius1, D3DXVECTOR3* pPos2, f
 	float diffX = pos1.x - pPos2->x;
 
 	// Y‚Ì·•ª
-	float diffY = pos1.z - pPos2->z;
+	float diffY = pos1.y - pPos2->y;
 
 	// Œ»Ý‚Ì‚Q“_‚Ì‹——£
 	float length = sqrtf((diffX * diffX) + (diffY * diffY));
@@ -204,7 +204,7 @@ bool CollisionArea(const D3DXVECTOR3& pos1, float radius1, D3DXVECTOR3* pPos2, f
 	{// ‚Q‚Â‚Ì•¨‘Ì‚Ì”¼Œa“¯Žm‚Ì˜a‚æ‚èŒ»Ý‚Ì‚Q“_‚Ì‹——£‚ª¬‚³‚¢‚©‚Ç‚¤‚©
 		float rot = atan2f(diffX, diffY);
 		pPos2->x = pos1.x - (sinf(rot) * radius);
-		pPos2->z = pos1.z - (cosf(rot) * radius);
+		pPos2->y = pos1.y - (cosf(rot) * radius);
 
 		// “–‚½‚Á‚½
 		return true;
@@ -232,7 +232,7 @@ int Digit(int number)
 //--------------------------------------------------
 float Vec2Cross(D3DXVECTOR3* v1, D3DXVECTOR3* v2)
 {
-	return (v1->x * v2->z) - (v1->z * v2->x);
+	return (v1->x * v2->y) - (v1->y * v2->x);
 }
 
 //--------------------------------------------------
@@ -240,5 +240,5 @@ float Vec2Cross(D3DXVECTOR3* v1, D3DXVECTOR3* v2)
 //--------------------------------------------------
 float Vec2Dot(D3DXVECTOR3* v1, D3DXVECTOR3* v2)
 {
-	return (v1->x * v2->x) + (v1->z * v2->z);
+	return (v1->x * v2->x) + (v1->y * v2->y);
 }
