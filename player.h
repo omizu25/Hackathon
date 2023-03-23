@@ -33,6 +33,8 @@ public:
 	// 静的メンバ変数
 	//--------------------
 	static CPlayer* Create();	//生成
+	static void SetKill(bool kill);	// キルの設定
+	static bool GetKill();	// キルされたかどうか
 
 private:
 	//--------------------
@@ -41,6 +43,11 @@ private:
 	D3DXVECTOR3 Move(int nUp, int nDown, int nLeft, int nRight);	//移動
 
 private:
+	//--------------------
+	// 静的メンバ変数
+	//--------------------
+	static bool m_kill;	// キルされたか
+
 	//--------------------
 	// メンバ変数
 	//--------------------

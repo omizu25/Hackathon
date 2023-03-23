@@ -12,6 +12,8 @@
 #include "enemy.h"
 #include "application.h"
 #include "utility.h"
+#include "snake_head.h"
+#include "player.h"
 
 //==================================================
 // íËã`
@@ -80,6 +82,11 @@ void CEnemyManager::Uninit()
 //--------------------------------------------------
 void CEnemyManager::Update()
 {
+	if (CPlayer::GetKill())
+	{
+		return;
+	}
+
 	m_time++;
 
 	// ÉQÅ[ÉÄ
@@ -114,8 +121,9 @@ void CEnemyManager::Game()
 	float rot = FloatRandom(D3DX_PI, -D3DX_PI);
 
 	// ê∂ê¨
-	CEnemy::Create(pos, rot);
-	
+	//CEnemy::Create(pos, rot);
+	CSnakeHead::Create(pos);
+
 	m_pop++;
 	m_interval--;
 

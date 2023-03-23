@@ -127,6 +127,12 @@
     <ClCompile Include="enemy_manager.cpp">
       <Filter>Object\3D</Filter>
     </ClCompile>
+    <ClCompile Include="snake_head.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
+    <ClCompile Include="snake_body.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
@@ -221,6 +227,12 @@
       <Filter>Object\3D</Filter>
     </ClInclude>
     <ClInclude Include="enemy_manager.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="snake_head.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="snake_body.h">
       <Filter>Object\3D</Filter>
     </ClInclude>
   </ItemGroup>
