@@ -21,15 +21,20 @@ public:
 		LABEL_Cursor,			// カーソル
 		LABEL_Number,			// 数字
 		LABEL_Enemy,			// 敵
+		LABEL_Enemy_ver2,		// 敵ver2
 		LABEL_Player,			// プレイヤー
 		LABEL_UI_Stake,			// 蛇の数(UI)
 		LABEL_Shape_Circle,		// 図形(円)
 		LABEL_Shape_Square,		// 図形(四角)
 		LABEL_Shape_Triangle,	// 図形(三角)
+		LABEL_Time,				// タイム
+		LABEL_Life,				// ライフ
 
 		/* ↓タイトル↓ */
 		LABEL_TITLE_BG,			// 背景
 		LABEL_TITLE_Snake,		// 蛇
+		LABEL_TITLE_PressEnter,	// PressEnter
+		LABEL_TITLE_LOGO,		// ロゴ
 		LABEL_MAX
 	};
 

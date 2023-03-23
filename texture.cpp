@@ -22,15 +22,20 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Cursor.png",			// カーソル
 	"data/TEXTURE/Number.png",			// 数字
 	"data/TEXTURE/Enemy.png",			// 敵
+	"data/TEXTURE/Enemy_ver2.png",		// 敵ver.2
 	"data/TEXTURE/Player.png",			// プレイヤー
 	"data/TEXTURE/UI_Snake.png",		// 蛇の数(UI)
 	"data/TEXTURE/Shape_Circle.png",	// 図形(円)
 	"data/TEXTURE/Shape_Square.png",	// 図形(四角)
 	"data/TEXTURE/Shape_Triangle.png",	// 図形(三角)
+	"data/TEXTURE/Time.png",			// タイム
+	"data/TEXTURE/Life.png",			// ライフ
 
 	/* ↓タイトル↓ */
-	"data/TEXTURE/Title/BG.png",		// 背景
-	"data/TEXTURE/Title/Snake.png",		// 蛇
+	"data/TEXTURE/Title/BG.png",			// 背景
+	"data/TEXTURE/Title/Snake.png",			// 蛇
+	"data/TEXTURE/Title/PressEnter.png",	// PressEnter
+	"data/TEXTURE/Title/Logo.png",			// ロゴ
 };
 }
 
