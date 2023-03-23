@@ -34,6 +34,7 @@ public:
 		LABEL_TITLE_BG,			// îwåi
 		LABEL_TITLE_Snake,		// é÷
 		LABEL_TITLE_PressEnter,	// PressEnter
+		LABEL_TITLE_LOGO,		// ÉçÉS
 		LABEL_MAX
 	};
 

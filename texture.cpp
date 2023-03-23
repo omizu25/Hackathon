@@ -35,6 +35,7 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Title/BG.png",			// îwåi
 	"data/TEXTURE/Title/Snake.png",			// é÷
 	"data/TEXTURE/Title/PressEnter.png",	// PressEnter
+	"data/TEXTURE/Title/Logo.png",			// ÉçÉS
 };
 }
 
