@@ -96,10 +96,10 @@ void CGame::Init()
 		m_pTime = CNumberManager::Create(pos, size, 30);
 
 		//スコア用UIの生成
-		CObject3D* pScore = CObject3D::Create();
+		CObject2D* pScore = CObject2D::Create();
 
 		// 位置の設定
-		pScore->SetPos(D3DXVECTOR3(420.0f, 290.0f, 0.0f));
+		pScore->SetPos(D3DXVECTOR3(1045.0f, 65.0f, 0.0f));
 
 		// サイズの設定
 		pScore->SetSize(D3DXVECTOR3(170.0f, 170.0f, 0.0f));
@@ -119,10 +119,10 @@ void CGame::Init()
 		m_pScore = CNumberManager::Create(pos, size, 0);
 
 		//タイム用UIの生成
-		CObject3D* pTime = CObject3D::Create();
+		CObject2D* pTime = CObject2D::Create();
 
 		// 位置の設定
-		pTime->SetPos(D3DXVECTOR3(-520.0f, 290.0f, 0.0f));
+		pTime->SetPos(D3DXVECTOR3(120.0f, 68.0f, 0.0f));
 
 		// サイズの設定
 		pTime->SetSize(D3DXVECTOR3(200.0f, 150.0f, 0.0f));
