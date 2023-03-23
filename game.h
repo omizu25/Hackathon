@@ -17,6 +17,7 @@
 //==================================================
 class CPlayer;	//プレイヤー
 class CCircle;
+class CNumberManager;
 
 //==================================================
 // クラス
@@ -31,6 +32,11 @@ public:
 	CPlayer* GetPlayer();	// プレイヤーの取得
 	CCircle* GetCircle();	// プレイヤーの取得
 
+	/* ↓静的メンバ変数↓ */
+private:
+	static CPlayer* m_pPlayer;	//プレイヤー
+	static CCircle* m_pCircle;	//プレイヤー
+
 	/* ↓メンバ関数↓ */
 public:
 	CGame();			// デフォルトコンストラクタ
@@ -44,8 +50,9 @@ public:
 
 	/* ↓メンバ変数↓ */
 private:
-	static CPlayer* m_pPlayer;	//プレイヤー
-	static CCircle* m_pCircle;	//プレイヤー
+	int m_time;
+	CNumberManager* m_pTime;	// タイムの情報
+	CNumberManager* m_pScore;	// スコアの情報
 };
 
 #endif // !_GAME_H_
