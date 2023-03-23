@@ -22,6 +22,7 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Cursor.png",			// カーソル
 	"data/TEXTURE/Number.png",			// 数字
 	"data/TEXTURE/Enemy.png",			// 敵
+	"data/TEXTURE/Enemy_ver2.png",		// 敵ver.2
 	"data/TEXTURE/Player.png",			// プレイヤー
 	"data/TEXTURE/UI_Snake.png",		// 蛇の数(UI)
 	"data/TEXTURE/Shape_Circle.png",	// 図形(円)

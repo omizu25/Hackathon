@@ -21,6 +21,7 @@ public:
 		LABEL_Cursor,			// カーソル
 		LABEL_Number,			// 数字
 		LABEL_Enemy,			// 敵
+		LABEL_Enemy_ver2,		// 敵ver2
 		LABEL_Player,			// プレイヤー
 		LABEL_UI_Stake,			// 蛇の数(UI)
 		LABEL_Shape_Circle,		// 図形(円)
