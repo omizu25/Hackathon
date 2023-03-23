@@ -19,7 +19,7 @@
 namespace
 {
 	const float fSpeed = 3.0f;		//速度
-	const float STD_SIZE = 40.0f;	// サイズ
+	const float STD_SIZE = 30.0f;	// サイズ
 }
 
 //-----------------------------
@@ -53,7 +53,7 @@ void CPlayer::Init()
 	CObject3D::Init();
 
 	//初期値の設定
-	m_size = D3DXVECTOR3(50.0f, 50.0f, 0.0f);	//大きさ
+	m_size = D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f);	//大きさ
 
 	//プレイヤー情報の設定
 	CObject3D::SetSize(m_size);	//大きさ
