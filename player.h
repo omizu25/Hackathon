@@ -28,13 +28,15 @@ public:
 	void Uninit() override;	// 終了
 	void Update() override;	// 更新
 	void Draw() override;	// 描画
+	void SetKill();	// キルの設定
 
 	//--------------------
 	// 静的メンバ変数
 	//--------------------
 	static CPlayer* Create();	//生成
-	static void SetKill(bool kill);	// キルの設定
 	static bool GetKill();	// キルされたかどうか
+	static void SetLife();
+	static int GetLife();
 
 private:
 	//--------------------
@@ -47,6 +49,7 @@ private:
 	// 静的メンバ変数
 	//--------------------
 	static bool m_kill;	// キルされたか
+	static int m_life;
 
 	//--------------------
 	// メンバ変数
@@ -54,6 +57,8 @@ private:
 	D3DXVECTOR3 m_pos;	//位置
 	D3DXVECTOR3 m_move;	//移動量
 	D3DXVECTOR3 m_size;	//大きさ
+	int m_time;
+	bool m_interval;
 };
 
 #endif

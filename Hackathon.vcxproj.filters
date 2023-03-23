@@ -139,6 +139,9 @@
     <ClCompile Include="return.cpp">
       <Filter>Object\3D</Filter>
     </ClCompile>
+    <ClCompile Include="tutorial.cpp">
+      <Filter>System\Mode</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
@@ -246,6 +249,9 @@
     </ClInclude>
     <ClInclude Include="return.h">
       <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="tutorial.h">
+      <Filter>System\Mode</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
