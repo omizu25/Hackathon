@@ -77,7 +77,8 @@ void CTutorial::Init()
 	}
 
 	//‹È‚ÌÄ¶
-	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Title);
+	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Tutorial);
+	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Tutorial,1.6f);
 }
 
 //--------------------------------------------------
