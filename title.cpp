@@ -59,7 +59,7 @@ void CTitle::Init()
 		pObj->SetCol(D3DXCOLOR(0.75f, 0.75f, 0.75f, 1.0f));
 
 		// テクスチャの設定
-		pObj->SetTexture(CTexture::LABEL_NONE);
+		pObj->SetTexture(CTexture::LABEL_TITLE_BG);
 	}
 
 	{// メニュー
@@ -76,7 +76,7 @@ void CTitle::Init()
 		m_pMenu->SetCursor(D3DXVECTOR3(50.0f, 50.0f, 0.0f), 20.0f);
 
 		// テクスチャの設定
-		m_pMenu->SetTexture(0, CTexture::LABEL_NONE);
+		m_pMenu->SetTexture(0, CTexture::LABEL_TITLE_PressEnter);
 	}
 
 	//曲の再生

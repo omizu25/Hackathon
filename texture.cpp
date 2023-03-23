@@ -29,8 +29,9 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Shape_Triangle.png",	// }Œ`(OŠp)
 
 	/* «ƒ^ƒCƒgƒ‹« */
-	"data/TEXTURE/Title/BG.png",		// ”wŒi
-	"data/TEXTURE/Title/Snake.png",		// Ö
+	"data/TEXTURE/Title/BG.png",			// ”wŒi
+	"data/TEXTURE/Title/Snake.png",			// Ö
+	"data/TEXTURE/Title/PressEnter.png",	// PressEnter
 };
 }
 
