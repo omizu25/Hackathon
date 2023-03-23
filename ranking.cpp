@@ -90,10 +90,10 @@ void CRanking::Init()
 
 	{// ƒƒjƒ…[
 		D3DXVECTOR3 pos = D3DXVECTOR3((float)CApplication::SCREEN_WIDTH * 0.75f, (float)CApplication::SCREEN_HEIGHT * 0.5f, 0.0f);
-		D3DXVECTOR3 size = D3DXVECTOR3(450.0f, 600.0f, 0.0f);
+		D3DXVECTOR3 size = D3DXVECTOR3(450.0f, 400.0f, 0.0f);
 
 		// ¶¬
-		m_pMenu = CMenu::Create(pos, size, 2, -400.0f);
+		m_pMenu = CMenu::Create(pos, size, 2, -200.0f);
 
 		// ˜g‚ÌÝ’è
 		m_pMenu->SetFrame(pos, D3DXVECTOR3(570.0f, 720.0f, 0.0f), D3DXCOLOR(0.0f, 0.0f, 0.0f, 0.5f));

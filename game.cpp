@@ -162,8 +162,6 @@ void CGame::Init()
 	// ¶¬
 	CEnemyManager::Create();
 
-	CPlayer::SetKill(false);
-
 	// ‹È‚ÌÄ¶
 	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);
 	CApplication::GetInstance()->GetSound()->SetVolume(CSound::LABEL_BGM_Game, 0.5f);

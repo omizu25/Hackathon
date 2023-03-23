@@ -166,7 +166,6 @@ void CSnakeBody::Collision()
 
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// “–‚½‚è”»’è
-		pPlayer->SetRelease();
-		CPlayer::SetKill(true);
+		pPlayer->SetKill();
 	}
 }
