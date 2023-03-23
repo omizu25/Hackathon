@@ -21,7 +21,7 @@ const string FILE_PATH[] =
 	"data/TEXTURE/effect.png",	// エフェクト
 	"data/TEXTURE/Cursor.png",	// カーソル
 	"data/TEXTURE/Number.png",	// 数字
-	"data/TEXTURE/Player.png",	// プレイヤー
+	"data/TEXTURE/Enemy.png",	// 敵
 };
 }
 
