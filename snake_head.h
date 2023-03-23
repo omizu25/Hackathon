@@ -46,6 +46,7 @@ public:
 private:
 	void Set(const D3DXVECTOR3& pos, CSnakeBody** pBody);	// 設定
 	void SetMove();		// 移動量の設定
+	void Target();		// ターゲット決め
 	void PlayerCollision();	// 当たり判定
 	void CircleCollision();	// 当たり判定
 
@@ -53,6 +54,7 @@ private:
 private:
 	int m_time;				// タイム
 	D3DXVECTOR3 m_move;		// 移動量
+	D3DXVECTOR3 m_target;	// ターゲット
 	D3DXVECTOR3 m_posOld;	// 前回の位置
 	CSnakeBody** m_pBody;	// 体の情報
 };

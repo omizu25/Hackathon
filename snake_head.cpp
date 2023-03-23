@@ -24,7 +24,7 @@ namespace
 const int MAX_BODY = 25;			// 体の最大数
 const int IDX_PARENT = 0;			// 親の番号
 const int STD_TIME = 90;			// 発生時間
-const float STD_SIZE = 35.0f;		// サイズの標準値
+const float STD_SIZE = 90.0f;		// サイズの標準値
 const float STD_MOVE = 2.0f;		// 移動量の標準値
 const float AMPLITUDE_WIDTH = 3.0f;	// 振幅の幅
 const float AMPLITUDE_SPEED = 2.0f;	// 振幅の速度
@@ -73,6 +73,7 @@ CSnakeHead* CSnakeHead::Create(const D3DXVECTOR3& pos)
 CSnakeHead::CSnakeHead() :
 	m_time(0),
 	m_move(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
+	m_target(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_posOld(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_pBody(nullptr)
 {
@@ -137,7 +138,7 @@ void CSnakeHead::Update()
 	if (m_time <= STD_TIME)
 	{// 生成時間中
 
-	 // 色の取得
+		// 色の取得
 		D3DXCOLOR col = CObject3D::GetCol();
 
 		col.a = SinCurve(m_time, 0.1f);
@@ -188,6 +189,8 @@ void CSnakeHead::Update()
 			// 色の設定
 			m_pBody[i]->SetCol(colBody);
 		}
+
+		Target();
 
 		// 移動量の設定
 		SetMove();
@@ -272,13 +275,10 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_NONE);
+	CObject3D::SetTexture(CTexture::LABEL_Enemy);
 
 	// 移動量の設定
 	SetMove();
-
-	// 色の設定
-	CObject3D::SetCol(D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f));
 }
 
 //--------------------------------------------------
@@ -286,21 +286,13 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 //--------------------------------------------------
 void CSnakeHead::SetMove()
 {
-	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
-	CPlayer* pPlayer = pGame->GetPlayer();
-	
-	if (pPlayer == nullptr)
-	{// nullチェック
-		return;
-	}
-
 	float fRotMove, fRotDest, fRotDiff;
 
 	// 現在の移動方向(角度)
 	fRotMove = atan2f(m_move.x, m_move.y);
 
 	// 目的の移動方向(角度)
-	fRotDest = atan2f(pPlayer->GetPos().x - GetPos().x, pPlayer->GetPos().y - GetPos().y);
+	fRotDest = atan2f(m_target.x - GetPos().x, m_target.y - GetPos().y);
 
 	fRotDiff = fRotDest - fRotMove;	// 目的の移動方向までの差分
 
@@ -331,6 +323,49 @@ void CSnakeHead::SetMove()
 }
 
 //--------------------------------------------------
+// 移動量の設定
+//--------------------------------------------------
+void CSnakeHead::Target()
+{
+	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
+	CPlayer* pPlayer = pGame->GetPlayer();
+
+	if (pPlayer == nullptr)
+	{// nullチェック
+		return;
+	}
+
+	D3DXVECTOR3 pos = CObject3D::GetPos();
+	float size = STD_SIZE * 1.5f;
+	D3DXVECTOR3 targetPos = pPlayer->GetPos();
+	float targetSize = pPlayer->GetSize().x * 0.5f;
+
+	if (CollisionCircle(pos, size, targetPos, targetSize))
+	{// 当たり判定
+		m_target = targetPos;
+	}
+	else if (CollisionCircle(pos, size, m_target, targetSize))
+	{
+		float width = (float)CApplication::SCREEN_WIDTH * 0.5f;
+		float height = (float)CApplication::SCREEN_HEIGHT * 0.5f;
+
+		m_target.x = FloatRandom(width, -width);
+		m_target.y = FloatRandom(height, -height);
+	}
+	else
+	{
+		if (m_time % STD_TIME == 0)
+		{
+			float width = (float)CApplication::SCREEN_WIDTH * 0.5f;
+			float height = (float)CApplication::SCREEN_HEIGHT * 0.5f;
+
+			m_target.x = FloatRandom(width, -width);
+			m_target.y = FloatRandom(height, -height);
+		}
+	}
+}
+
+//--------------------------------------------------
 // 当たり判定
 //--------------------------------------------------
 void CSnakeHead::PlayerCollision()
@@ -344,7 +379,7 @@ void CSnakeHead::PlayerCollision()
 	}
 
 	D3DXVECTOR3 pos = CObject3D::GetPos();
-	float size = STD_SIZE * 0.5f;
+	float size = STD_SIZE * 0.3f;
 	D3DXVECTOR3 targetPos = pPlayer->GetPos();
 	float targetSize = pPlayer->GetSize().x * 0.5f;
 

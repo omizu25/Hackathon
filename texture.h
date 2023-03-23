@@ -31,6 +31,7 @@ public:
 		/* «ƒ^ƒCƒgƒ‹« */
 		LABEL_TITLE_BG,			// ”wŒi
 		LABEL_TITLE_Snake,		// Ö
+		LABEL_TITLE_PressEnter,	// PressEnter
 		LABEL_MAX
 	};
 
