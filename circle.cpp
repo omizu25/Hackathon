@@ -85,6 +85,8 @@ void CCircle::Init()
 	// サイズの設定
 	CObject3D::SetSize(D3DXVECTOR3(0.0f, 0.0f, 0.0f));
 
+	CObject3D::SetCol(D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f));
+
 	// テクスチャの設定
 	CObject3D::SetTexture(CTexture::LABEL_circle);
 }
@@ -139,7 +141,7 @@ void CCircle::Update()
 				m_nowAppear = true;
 				m_appear = true;
 
-				float size = FloatRandom(STD_SIZE, STD_SIZE * 0.25f);
+				float size = FloatRandom(STD_SIZE, STD_SIZE * 0.5f);
 				m_size = D3DXVECTOR3(size, size, 0.0f);
 
 				float width = (float)CApplication::SCREEN_WIDTH * 0.35f;

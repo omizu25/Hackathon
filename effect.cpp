@@ -17,9 +17,9 @@
 //==================================================
 namespace
 {
-const int MAX_EXPLOSION = 3000;	// 爆発の最大数
+const int MAX_EXPLOSION = 1000;	// 爆発の最大数
 const int MAX_LIFE = 100;		// 寿命の最大値
-const float STD_MOVE = 45.0f;	// 移動量の最大値
+const float STD_MOVE = 5.0f;	// 移動量の最大値
 const float STD_SIZE = 12.0f;	// サイズの標準値
 }
 
@@ -138,6 +138,135 @@ void CEffect::Explosion(const D3DXVECTOR3& pos)
 
 		// 生成
 		CEffect::Create(pos + randomPos, move, randomCol);
+	}
+}
+
+//--------------------------------------------------
+// プレイヤー
+//--------------------------------------------------
+void CEffect::Player(const D3DXVECTOR3& pos)
+{
+	D3DXCOLOR col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	D3DXVECTOR3 randomPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	float rot = 0.0f;
+	float random = 0.0f;
+
+	for (int i = 0; i < 500; i++)
+	{
+		rot = (D3DX_PI * 2.0f) / 500 * i;
+
+		// 角度の正規化
+		NormalizeAngle(&rot);
+
+		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(100.0f, 50.0f);
+
+		random = FloatRandom(50.0f, 50.0f * 0.1f);
+
+		move.x = sinf(rot) * random;
+		move.y = cosf(rot) * random;
+
+		col.r = 1.0f + FloatRandom(0.0f, -0.25f);
+		col.g = 1.0f + FloatRandom(0.0f, -0.25f);
+		col.b = 1.0f + FloatRandom(0.0f, -0.25f);
+
+		// 生成
+		CEffect::Create(pos + randomPos, move, col);
+	}
+}
+
+//--------------------------------------------------
+// 爆発
+//--------------------------------------------------
+void CEffect::Enemy(const D3DXVECTOR3& pos)
+{
+	float red = FloatRandom(1.0f, 0.0f);
+	float green = FloatRandom(1.0f, 0.0f);
+	float blue = FloatRandom(1.0f, 0.0f);
+
+	D3DXCOLOR col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	D3DXVECTOR3 randomPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	float rot = 0.0f;
+	float random = 0.0f;
+
+	for (int i = 0; i < MAX_EXPLOSION; i++)
+	{
+		rot = (D3DX_PI * 2.0f) / MAX_EXPLOSION * i;
+
+		// 角度の正規化
+		NormalizeAngle(&rot);
+
+		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(75.0f, 50.0f);
+
+		random = FloatRandom(10.0f, 10.0f * 0.5f);
+
+		move.x = sinf(rot) * random;
+		move.y = cosf(rot) * random;
+
+		col.r = red + FloatRandom(0.25f, -0.25f);
+		col.g = green + FloatRandom(0.25f, -0.25f);
+		col.b = blue + FloatRandom(0.25f, -0.25f);
+
+		// 生成
+		CEffect::Create(pos + randomPos, move, col);
+	}
+
+	for (int i = 0; i < (MAX_EXPLOSION / 2); i++)
+	{
+		rot = (D3DX_PI * 2.0f) / (MAX_EXPLOSION / 2) * i;
+
+		// 角度の正規化
+		NormalizeAngle(&rot);
+
+		randomPos = D3DXVECTOR3(sinf(rot), cosf(rot), 0.0f) * FloatRandom(75.0f, 50.0f);
+
+		random = FloatRandom(10.0f, 10.0f * 0.1f);
+
+		move.x = sinf(rot) * random;
+		move.y = cosf(rot) * random;
+
+		col.r = red + FloatRandom(0.25f, -0.25f);
+		col.g = green + FloatRandom(0.25f, -0.25f);
+		col.b = blue + FloatRandom(0.25f, -0.25f);
+
+		// 生成
+		CEffect::Create(pos + randomPos, move, col);
+	}
+}
+
+//--------------------------------------------------
+// ボム
+//--------------------------------------------------
+void CEffect::Bom(const D3DXVECTOR3& pos)
+{
+	D3DXCOLOR col = D3DXCOLOR(0.0f, 0.5f, 1.0f, 1.0f);
+	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	float rot = 0.0f;
+	CEffect* pEffect = nullptr;
+
+	for (int i = 0; i < 500; i++)
+	{
+		rot = (D3DX_PI * 2.0f) / 500 * i;
+
+		// 角度の正規化
+		NormalizeAngle(&rot);
+
+		{// 外側
+			move.x = sinf(rot) * 70.0f;
+			move.y = cosf(rot) * 70.0f;
+
+			// 生成
+			pEffect = CEffect::Create(pos, move, col);
+		}
+
+		{// 内側
+			move.x = sinf(rot) * (70.0f * 0.75f);
+			move.y = cosf(rot) * (70.0f * 0.75f);
+
+			// 生成
+			pEffect = CEffect::Create(pos, move, col);
+		}
 	}
 }
 
