@@ -54,6 +54,8 @@ private:
 private:
 	int m_time;	// タイム
 	bool m_appear;	// 出現しているかどうか
+	bool m_nowAppear;	// 出現中
+	D3DXVECTOR3 m_size;
 	D3DXCOLOR m_changeCol;	// 色の変化量
 };
 

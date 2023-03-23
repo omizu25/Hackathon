@@ -24,7 +24,7 @@ namespace
 const int MAX_BODY = 25;			// 体の最大数
 const int IDX_PARENT = 0;			// 親の番号
 const int STD_TIME = 90;			// 発生時間
-const float STD_SIZE = 30.0f;		// サイズの標準値
+const float STD_SIZE = 90.0f;		// サイズの標準値
 const float OBJ_SIZE = 300.0f;		// サイズの標準値
 const float STD_MOVE = 2.0f;		// 移動量の標準値
 const float AMPLITUDE_WIDTH = 3.0f;	// 振幅の幅
@@ -216,6 +216,7 @@ void CSnakeHead::Update()
 
 		// 位置の設定
 		CObject3D::SetPos(pos);
+		m_pObj->SetPos(pos);
 
 		if (m_pBody[IDX_PARENT] != nullptr)
 		{// nullチェック
@@ -279,7 +280,7 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 	CObject3D::SetSize(D3DXVECTOR3(STD_SIZE, STD_SIZE, 0.0f));
 
 	// テクスチャの設定
-	CObject3D::SetTexture(CTexture::LABEL_Enemy_ver2);
+	CObject3D::SetTexture(CTexture::LABEL_Enemy_ver3_inside);
 
 	// 移動量の設定
 	SetMove();
@@ -288,8 +289,8 @@ void CSnakeHead::Set(const D3DXVECTOR3& pos, CSnakeBody** pBody)
 		m_pObj = CObject3D::Create();
 
 		m_pObj->SetPos(pos);
-		CObject3D::SetSize(D3DXVECTOR3(OBJ_SIZE, OBJ_SIZE, 0.0f));
-		m_pObj->SetTexture(CTexture::LABEL_Enemy);
+		m_pObj->SetSize(D3DXVECTOR3(OBJ_SIZE, OBJ_SIZE, 0.0f));
+		m_pObj->SetTexture(CTexture::LABEL_Enemy_ver3_outside);
 	}
 }
 
@@ -466,5 +467,7 @@ void CSnakeHead::CircleCollision()
 			// 解放
 			m_pBody[i]->SetRelease();
 		}
+
+		m_pObj->SetRelease();
 	}
 }

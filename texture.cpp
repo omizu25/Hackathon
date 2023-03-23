@@ -45,6 +45,9 @@ const string FILE_PATH[] =
 	"data/TEXTURE/Ranking/RankingLogo.png",			// ロゴ
 	"data/TEXTURE/Ranking/RankingReturnLogo.png",	// ロゴ
 	"data/TEXTURE/Ranking/RankingGoLogo.png",	// ロゴ
+
+	/* ↓リザルト↓ */
+	"data/TEXTURE/Result/Snake_Anim.png",	//アニメーション蛇
 };
 }
 
