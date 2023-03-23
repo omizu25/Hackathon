@@ -21,7 +21,7 @@ namespace
 {
 static const float NUM_WIDTH = 60.0f;	// 数の幅
 static const float NUM_HEIGHT = 80.0f;	// 数の高さ
-static const float RANK_SIZE = 60.0f;	// 位のサイズ
+static const float RANK_SIZE = 90.0f;	// 位のサイズ
 static const float RANK_INTERVAL = (NUM_WIDTH * CNumberManager::MAX_DIGIT) + (RANK_SIZE * 0.5f);	// 位の間隔
 const string FILE_PATH = "data/TEXT/Ranking.txt";	// テキストのパス
 }
@@ -322,7 +322,7 @@ void CRankingUI::Set(const D3DXVECTOR3& pos, float length)
 		m_pRank[i] = CObject2D::Create();
 		m_pRank[i]->SetPos(D3DXVECTOR3(rankPosX, posY, 0.0f));
 		m_pRank[i]->SetSize(D3DXVECTOR3(RANK_SIZE, RANK_SIZE, 0.0f));
-		m_pRank[i]->SetTexture(CTexture::LABEL_Cursor);
+		m_pRank[i]->SetTexture(CTexture::LABEL_Number_Rank);
 
 		// 順位の生成
 		m_pNumber[i] = CNumber::Create(D3DXVECTOR3(rankPosX - RANK_SIZE, posY, 0.0f), size * 1.2f);
