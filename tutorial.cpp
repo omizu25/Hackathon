@@ -103,14 +103,6 @@ void CTutorial::Uninit()
 //--------------------------------------------------
 void CTutorial::Update()
 {
-	CInput* pInput = CInput::GetKey();
-
-	if (pInput->Trigger(DIK_F1))
-	{// キーが押された
-	 // モードの変更
-		CApplication::GetInstance()->GetFade()->ChangeMode(EMode::MODE_GAME);
-	}
-
 	// 入力
 	Input();
 }
