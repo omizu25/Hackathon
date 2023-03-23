@@ -35,6 +35,9 @@ public:
 		LABEL_TITLE_Snake,		// Ö
 		LABEL_TITLE_PressEnter,	// PressEnter
 		LABEL_TITLE_LOGO,		// ƒƒS
+
+		/* «ƒ^ƒCƒgƒ‹« */
+		LABEL_RANKING_LOGO,		// ƒƒS
 		LABEL_MAX
 	};
 
