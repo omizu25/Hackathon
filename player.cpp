@@ -10,13 +10,16 @@
 //-----------------------------
 #include "player.h"
 #include "input.h"
+#include "application.h"
+#include "utility.h"
 
 //-----------------------------
 // 定義
 //-----------------------------
 namespace
 {
-	float fSpeed = 3.0f;	//速度
+	const float fSpeed = 3.0f;		//速度
+	const float STD_SIZE = 40.0f;	// サイズ
 }
 
 //-----------------------------
@@ -87,6 +90,13 @@ void CPlayer::Update()
 
 	//位置に移動量を加算
 	m_pos += m_move;
+
+	D3DXVECTOR3 range = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	range.x = ((float)CApplication::SCREEN_WIDTH * 0.5f) - (STD_SIZE * 0.5f);
+	range.y = ((float)CApplication::SCREEN_HEIGHT * 0.5f) - (STD_SIZE * 0.5f);
+
+	// 範囲内で反射
+	InRangeReflect(&m_pos, &m_move, range);
 
 	//位置を設定
 	CObject3D::SetPos(m_pos);
