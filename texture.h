@@ -16,21 +16,23 @@ class CTexture
 public:
 	enum ELabel
 	{
-		LABEL_NONE = -1,		// 使用しない
-		LABEL_Effect = 0,		// エフェクト
-		LABEL_Cursor,			// カーソル
-		LABEL_Number,			// 数字
-		LABEL_Enemy,			// 敵
-		LABEL_Enemy_ver2,		// 敵ver2
-		LABEL_Player,			// プレイヤー
-		LABEL_UI_Stake,			// 蛇の数(UI)
-		LABEL_Shape_Circle,		// 図形(円)
-		LABEL_Shape_Square,		// 図形(四角)
-		LABEL_Shape_Triangle,	// 図形(三角)
-		LABEL_Time,				// タイム
-		LABEL_Life,				// ライフ
-		LABEL_Frame_Space,		// 宇宙フレーム
-		LABEL_circle,			// サークル
+		LABEL_NONE = -1,			// 使用しない
+		LABEL_Effect = 0,			// エフェクト
+		LABEL_Cursor,				// カーソル
+		LABEL_Number,				// 数字
+		LABEL_Enemy,				// 敵
+		LABEL_Enemy_ver2,			// 敵ver2
+		LABEL_Enemy_ver3_inside,	// 敵ver3_内側
+		LABEL_Enemy_ver3_outside,	// 敵ver3_外側
+		LABEL_Player,				// プレイヤー
+		LABEL_UI_Stake,				// 蛇の数(UI)
+		LABEL_Shape_Circle,			// 図形(円)
+		LABEL_Shape_Square,			// 図形(四角)
+		LABEL_Shape_Triangle,		// 図形(三角)
+		LABEL_Time,					// タイム
+		LABEL_Life,					// ライフ
+		LABEL_Frame_Space,			// 宇宙フレーム
+		LABEL_circle,				// サークル
 
 		/* ↓タイトル↓ */
 		LABEL_TITLE_BG,			// 背景
