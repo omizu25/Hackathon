@@ -17,11 +17,13 @@
 #include "effect.h"
 #include "player.h"
 #include "enemy_manager.h"
+#include "circle.h"
 
 //==================================================
 // 静的メンバ変数宣言
 //==================================================
 CPlayer* CGame::m_pPlayer = nullptr;	//プレイヤー
+CCircle* CGame::m_pCircle = nullptr;	//プレイヤー
 
 //==================================================
 // 定義
@@ -53,6 +55,14 @@ CPlayer* CGame::GetPlayer()
 }
 
 //--------------------------------------------------
+// プレイヤーの取得
+//--------------------------------------------------
+CCircle* CGame::GetCircle()
+{
+	return m_pCircle;
+}
+
+//--------------------------------------------------
 // 初期化
 //--------------------------------------------------
 void CGame::Init()
@@ -71,10 +81,13 @@ void CGame::Init()
 
 		// テクスチャの設定
 		pObj->SetTexture(CTexture::LABEL_NONE);
-
-		//プレイヤーの生成
-		m_pPlayer = CPlayer::Create();
 	}
+
+	// サークル
+	m_pCircle = CCircle::Create();
+
+	//プレイヤーの生成
+	m_pPlayer = CPlayer::Create();
 
 	// 生成
 	CEnemyManager::Create();
@@ -82,7 +95,8 @@ void CGame::Init()
 	CPlayer::SetKill(false);
 
 	// 曲の再生
-	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);}
+	CApplication::GetInstance()->GetSound()->Play(CSound::LABEL_BGM_Game);
+}
 
 //--------------------------------------------------
 // 終了

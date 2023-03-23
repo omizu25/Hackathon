@@ -133,6 +133,9 @@
     <ClCompile Include="snake_body.cpp">
       <Filter>Object\3D</Filter>
     </ClCompile>
+    <ClCompile Include="circle.cpp">
+      <Filter>Object\3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precompile.h" />
@@ -233,6 +236,9 @@
       <Filter>Object\3D</Filter>
     </ClInclude>
     <ClInclude Include="snake_body.h">
+      <Filter>Object\3D</Filter>
+    </ClInclude>
+    <ClInclude Include="circle.h">
       <Filter>Object\3D</Filter>
     </ClInclude>
   </ItemGroup>

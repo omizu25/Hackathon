@@ -14,6 +14,7 @@
 #include "utility.h"
 #include "game.h"
 #include "player.h"
+#include "circle.h"
 
 //==================================================
 // 定義
@@ -230,7 +231,8 @@ void CSnakeHead::Update()
 		}
 
 		// 当たり判定
-		Collision();
+		PlayerCollision();
+		CircleCollision();
 	}
 
 	// 更新
@@ -331,7 +333,7 @@ void CSnakeHead::SetMove()
 //--------------------------------------------------
 // 当たり判定
 //--------------------------------------------------
-void CSnakeHead::Collision()
+void CSnakeHead::PlayerCollision()
 {
 	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
 	CPlayer* pPlayer = pGame->GetPlayer();
@@ -350,5 +352,45 @@ void CSnakeHead::Collision()
 	{// 当たり判定
 		pPlayer->SetRelease();
 		CPlayer::SetKill(true);
+	}
+}
+
+//--------------------------------------------------
+// 当たり判定
+//--------------------------------------------------
+void CSnakeHead::CircleCollision()
+{
+	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
+	CCircle* pCircle = pGame->GetCircle();
+
+	if (pCircle == nullptr)
+	{// nullチェック
+		return;
+	}
+
+	if (!pCircle->GetCollision())
+	{
+		return;
+	}
+
+	D3DXVECTOR3 pos = CObject3D::GetPos();
+	float size = STD_SIZE * 0.5f;
+	D3DXVECTOR3 targetPos = pCircle->GetPos();
+	float targetSize = pCircle->GetSize().x * 0.5f;
+
+	if (CollisionCircle(pos, size, targetPos, targetSize))
+	{// 当たり判定
+		SetRelease();
+
+		for (int i = 0; i < MAX_BODY; i++)
+		{
+			if (m_pBody[i] == nullptr)
+			{// nullチェック
+				continue;
+			}
+
+			// 解放
+			m_pBody[i]->SetRelease();
+		}
 	}
 }

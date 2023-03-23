@@ -46,7 +46,8 @@ public:
 private:
 	void Set(const D3DXVECTOR3& pos, CSnakeBody** pBody);	// İ’è
 	void SetMove();		// ˆÚ“®—Ê‚Ìİ’è
-	void Collision();	// “–‚½‚è”»’è
+	void PlayerCollision();	// “–‚½‚è”»’è
+	void CircleCollision();	// “–‚½‚è”»’è
 
 	/* ƒƒ“ƒo•Ï” */
 private:

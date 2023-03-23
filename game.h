@@ -16,6 +16,7 @@
 // 前方宣言
 //==================================================
 class CPlayer;	//プレイヤー
+class CCircle;
 
 //==================================================
 // クラス
@@ -28,6 +29,7 @@ public:
 	/* ↓静的メンバ関数↓ */
 public:
 	CPlayer* GetPlayer();	// プレイヤーの取得
+	CCircle* GetCircle();	// プレイヤーの取得
 
 	/* ↓メンバ関数↓ */
 public:
@@ -43,6 +45,7 @@ public:
 	/* ↓メンバ変数↓ */
 private:
 	static CPlayer* m_pPlayer;	//プレイヤー
+	static CCircle* m_pCircle;	//プレイヤー
 };
 
 #endif // !_GAME_H_

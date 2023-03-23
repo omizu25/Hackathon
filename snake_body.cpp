@@ -13,6 +13,7 @@
 #include "application.h"
 #include "game.h"
 #include "player.h"
+#include "circle.h"
 
 //==================================================
 // ’è‹`
@@ -166,5 +167,6 @@ void CSnakeBody::Collision()
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// “–‚½‚è”»’è
 		pPlayer->SetRelease();
+		CPlayer::SetKill(true);
 	}
 }

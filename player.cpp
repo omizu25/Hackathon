@@ -54,6 +54,9 @@ void CPlayer::Init()
 
 	//プレイヤー情報の設定
 	CObject3D::SetSize(m_size);	//大きさ
+
+	// テクスチャの設定
+	CObject3D::SetTexture(CTexture::LABEL_Player);
 }
 
 //===============================

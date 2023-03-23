@@ -118,10 +118,7 @@ void CEnemyManager::Game()
 	pos.x = FloatRandom(width, -width);
 	pos.y = FloatRandom(height, -height);
 
-	float rot = FloatRandom(D3DX_PI, -D3DX_PI);
-
 	// ê∂ê¨
-	//CEnemy::Create(pos, rot);
 	CSnakeHead::Create(pos);
 
 	m_pop++;
