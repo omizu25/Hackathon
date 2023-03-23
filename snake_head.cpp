@@ -458,5 +458,7 @@ void CSnakeHead::CircleCollision()
 		}
 
 		m_pObj->SetRelease();
+
+		pGame->AddScore(1);
 	}
 }

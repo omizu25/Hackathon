@@ -115,6 +115,9 @@ void CCircle::Update()
 
 	if (!m_nowAppear)
 	{
+		// êFÇÃê›íË
+		SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+
 		if (m_appear)
 		{
 			if (m_time >= APPEARANCE_TIME)
@@ -213,4 +216,11 @@ void CCircle::Appear()
 
 		SetSize(size);
 	}
+
+	D3DXCOLOR col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+
+	col.a = 1.0f - (CosCurve(m_time, 0.1f) * 0.7f);
+
+	// êFÇÃê›íË
+	SetCol(col);
 }
