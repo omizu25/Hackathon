@@ -185,6 +185,7 @@
     <ClCompile Include="ranking_ui.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
+    <ClCompile Include="return.cpp" />
     <ClCompile Include="snake_body.cpp" />
     <ClCompile Include="snake_head.cpp" />
     <ClCompile Include="sound.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="ranking_ui.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
+    <ClInclude Include="return.h" />
     <ClInclude Include="snake_body.h" />
     <ClInclude Include="snake_head.h" />
     <ClInclude Include="sound.h" />
