@@ -53,7 +53,9 @@ CEnemyManager* CEnemyManager::Create()
 //--------------------------------------------------
 CEnemyManager::CEnemyManager() : CObject(CObject::PRIORITY_SYSTEM),
 	m_time(0),
-	m_interval(0)
+	m_nGameTime(0),
+	m_interval(0),
+	m_nMaxPop(0)
 {
 }
 
@@ -70,7 +72,10 @@ CEnemyManager::~CEnemyManager()
 void CEnemyManager::Init()
 {
 	m_time = 0;
+	m_nGameTime = 0;
 	m_interval = MAX_INTERVAL;
+	m_pop = 0;
+	m_nMaxPop = 1;
 }
 
 //--------------------------------------------------
@@ -93,6 +98,14 @@ void CEnemyManager::Update()
 	}
 
 	m_time++;
+
+	//ゲーム時間のカウント
+	m_nGameTime++;
+
+	if (m_nGameTime % (60 * 12) == 0)
+	{
+		m_nMaxPop++;
+	}
 
 	// ゲーム
 	Game();
@@ -123,7 +136,7 @@ void CEnemyManager::Game()
 	pos.x = FloatRandom(width, -width);
 	pos.y = FloatRandom(height, -height);
 
-	if (m_pop < MAX_POP)
+	if (m_pop < m_nMaxPop)
 	{//最大数以内なら
 		// 生成
 		CSnakeHead::Create(pos);
