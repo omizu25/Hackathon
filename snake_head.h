@@ -57,6 +57,7 @@ private:
 	D3DXVECTOR3 m_target;	// ターゲット
 	D3DXVECTOR3 m_posOld;	// 前回の位置
 	CSnakeBody** m_pBody;	// 体の情報
+	bool m_chase;
 };
 
 #endif // !_ENEMY_SNAKE_HEAD_H_
