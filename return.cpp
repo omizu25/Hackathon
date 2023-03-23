@@ -59,11 +59,11 @@ void CReturn::CreateAll()
 	m_move = 0.0f;
 	D3DXVECTOR3 pos = D3DXVECTOR3(-STD_SIZE, -120.0f, 0.0f);
 
-//	m_count = CRankingUI::Get(-1);
-	m_count = 7;
+	m_count = CRankingUI::Get(-1);
+	//m_count = 7;
 
-//	for (int i = 0; i < CRankingUI::Get(-1); i++)
-		for (int i = 0; i < 7; i++)
+	for (int i = 0; i < CRankingUI::Get(-1); i++)
+		//for (int i = 0; i < 7; i++)
 	{
 		// ¶¬
 		CReturn::Create(pos);
