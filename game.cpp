@@ -153,6 +153,29 @@ void CGame::Init()
 		pTime->SetTexture(CTexture::LABEL_Time);
 	}
 
+	{// 残機
+		int nLife = CPlayer::GetLife();
+		CObject2D* pObj[3];
+
+		for (int i = 0; i < nLife; i++)
+		{
+			pObj[i] = CObject2D::Create();
+
+			// 位置の設定
+			float fPosX = CApplication::SCREEN_WIDTH / 2 - 70.0f;
+			pObj[i]->SetPos(D3DXVECTOR3(fPosX + (70.0f * i), 70.0f, 0.0f));
+
+			// サイズの設定
+			pObj[i]->SetSize(D3DXVECTOR3(70.0f, 70.0f, 0.0f));
+
+			// 色の設定
+			pObj[i]->SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f));
+
+			// テクスチャの設定
+			pObj[i]->SetTexture(CTexture::LABEL_Player);
+		}
+	}
+
 	// サークル
 	m_pCircle = CCircle::Create();
 
