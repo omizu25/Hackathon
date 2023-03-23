@@ -75,7 +75,8 @@ CSnakeHead::CSnakeHead() :
 	m_move(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_target(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
 	m_posOld(D3DXVECTOR3(0.0f, 0.0f, 0.0f)),
-	m_pBody(nullptr)
+	m_pBody(nullptr),
+	m_chase(false)
 {
 }
 
@@ -92,6 +93,7 @@ CSnakeHead::~CSnakeHead()
 void CSnakeHead::Init()
 {
 	m_time = 0;
+	m_chase = false;
 
 	// ‰Šú‰»
 	CObject3D::Init();
@@ -306,12 +308,19 @@ void CSnakeHead::SetMove()
 
 	float sinCurve = sinf(D3DXToRadian(m_time * AMPLITUDE_SPEED)) * AMPLITUDE_WIDTH;
 
-	m_move.x = (sinf(fRotMove) * (STD_MOVE + FloatRandom(STD_MOVE, 0.0f))) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
-	m_move.y = (cosf(fRotMove) * (STD_MOVE + FloatRandom(STD_MOVE, 0.0f))) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
+	float speed = STD_MOVE;
+
+	if (!m_chase)
+	{
+		speed *= 0.5f;
+	}
+
+	m_move.x = (sinf(fRotMove) * (speed + FloatRandom(speed, 0.0f))) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
+	m_move.y = (cosf(fRotMove) * (speed + FloatRandom(speed, 0.0f))) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
 
 	D3DXVECTOR3 move = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	move.x = (sinf(fRotMove) * STD_MOVE) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
-	move.y = (cosf(fRotMove) * STD_MOVE) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
+	move.x = (sinf(fRotMove) * speed) + (sinCurve * sinf(fRotMove + D3DX_PI * 0.5f));
+	move.y = (cosf(fRotMove) * speed) + (sinCurve * cosf(fRotMove + D3DX_PI * 0.5f));
 
 	float rot = atan2f(move.x, move.y);
 
@@ -343,6 +352,7 @@ void CSnakeHead::Target()
 	if (CollisionCircle(pos, size, targetPos, targetSize))
 	{// “–‚½‚è”»’è
 		m_target = targetPos;
+		m_chase = true;
 	}
 	else if (CollisionCircle(pos, size, m_target, targetSize))
 	{
@@ -351,6 +361,8 @@ void CSnakeHead::Target()
 
 		m_target.x = FloatRandom(width, -width);
 		m_target.y = FloatRandom(height, -height);
+
+		m_chase = false;
 	}
 	else
 	{
@@ -362,6 +374,8 @@ void CSnakeHead::Target()
 			m_target.x = FloatRandom(width, -width);
 			m_target.y = FloatRandom(height, -height);
 		}
+
+		m_chase = false;
 	}
 }
 
@@ -395,6 +409,11 @@ void CSnakeHead::PlayerCollision()
 //--------------------------------------------------
 void CSnakeHead::CircleCollision()
 {
+	if (!m_chase)
+	{
+		return;
+	}
+
 	CGame* pGame = (CGame*)CApplication::GetInstance()->GetMode();
 	CCircle* pCircle = pGame->GetCircle();
 
